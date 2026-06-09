@@ -10,7 +10,10 @@
         "--port", "5173"
       ],
       "port": 5173,
-      "cwd": "C:\\Users\\ACER GAMING\\Desktop\\Business\\Customer Service Site\\zenorva support v1\\zenorva"
+      "cwd": "C:\\Users\\ACER GAMING\\Desktop\\Business\\Customer Service Site\\zenorva support v1\\zenorva",
+      "env": {
+        "ESBUILD_BINARY_PATH": "C:\\Users\\ACER GAMING\\AppData\\Local\\Temp\\esbuild-bin\\esbuild.exe"
+      }
     }
   ]
 }

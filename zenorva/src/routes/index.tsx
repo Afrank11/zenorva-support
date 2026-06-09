@@ -48,8 +48,9 @@ function HomePage() {
     <>
       <Hero />
       <AboutUs />
-      <HowItWorksOverview />
+      <Team />
       <ProblemAndStats />
+      <HowItWorksOverview />
       <BehindEngineer />
       <TrustedBy />
       <ValueCards />
@@ -147,6 +148,77 @@ function Hero() {
           </div>
         </div>
 
+      </div>
+    </section>
+  );
+}
+
+/* ───── Team ───── */
+function Team() {
+  const members = [
+    {
+      initials: "KC",
+      name: "Kwale Cedric",
+      role: "CEO & Co-Founder",
+      bio: "Founder of Zenorva Support and operations lead. Kwale oversees every client engagement — ensuring quality, transparency, and accountability from day one.",
+      tags: ["Operations", "Client Relations", "Strategy"],
+    },
+    {
+      initials: "FA",
+      name: "Ateh Frank Ateh",
+      role: "CTO & Co-Founder",
+      bio: "Fullstack developer and network engineer. Frank leads all technical infrastructure, tooling integrations, and the systems that power our support operations.",
+      tags: ["Fullstack Dev", "Network Engineering", "Systems"],
+    },
+    {
+      initials: "MT",
+      name: "Mbi Bocav Tsewele",
+      role: "COO & Co-Founder",
+      bio: "Marketing lead and operations co-pilot. Mbi drives growth strategy, brand positioning, and ensures the business scales without compromising on quality.",
+      tags: ["Marketing", "Growth", "Operations"],
+    },
+  ];
+
+  return (
+    <section className="py-20 bg-surface">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Reveal>
+          <SectionHeading
+            eyebrow="The people behind it"
+            title="Meet the Team"
+            subtitle="Three co-founders. One shared mission: connect exceptional African talent with companies that deserve better support."
+          />
+        </Reveal>
+        <div className="mt-14 grid md:grid-cols-3 gap-6">
+          {members.map((m, i) => (
+            <Reveal key={m.name} delay={i * 90}>
+              <div className="group h-full rounded-2xl border border-border bg-white p-7 hover:border-violet/30 hover:shadow-[0_8px_30px_oklch(0.55_0.25_285/0.08)] transition-all duration-300 flex flex-col">
+                {/* Avatar */}
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="h-14 w-14 rounded-2xl bg-[oklch(0.13_0.07_285)] text-white font-bold font-display inline-flex items-center justify-center text-lg flex-none shadow-[0_4px_14px_oklch(0.13_0.07_285/0.25)]">
+                    {m.initials}
+                  </div>
+                  <div>
+                    <div className="font-display font-bold text-[oklch(0.13_0.07_285)] text-base leading-tight">{m.name}</div>
+                    <div className="text-xs text-violet font-semibold mt-0.5">{m.role}</div>
+                  </div>
+                </div>
+
+                {/* Bio */}
+                <p className="text-sm text-muted-foreground leading-relaxed flex-1">{m.bio}</p>
+
+                {/* Tags */}
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {m.tags.map((t) => (
+                    <span key={t} className="px-2.5 py-1 rounded-full bg-violet-light text-violet text-[11px] font-medium">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );
