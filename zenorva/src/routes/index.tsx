@@ -47,12 +47,13 @@ function HomePage() {
   return (
     <>
       <Hero />
+      <AboutUs />
+      <OurStats />
       <Problem />
       <HowItWorksOverview />
       <BehindEngineer />
       <TrustedBy />
       <ValueCards />
-      <MetricsBar />
       <CostComparison />
       <PilotCallout />
       <PartnerSection />
@@ -267,6 +268,133 @@ function DashStat({ label, value }: { label: string; value: string }) {
       <div className="text-[10px] uppercase tracking-wider text-white/45">{label}</div>
       <div className="mt-1 font-mono text-xl font-semibold text-[oklch(0.75_0.18_285)]">{value}</div>
     </div>
+  );
+}
+
+/* ───── About Us ───── */
+function AboutUs() {
+  return (
+    <section className="py-24 bg-white overflow-hidden">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+          {/* Left — story */}
+          <Reveal>
+            <div>
+              <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-violet mb-4">
+                Who we are
+              </span>
+              <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-bold leading-[1.1] text-[oklch(0.13_0.07_285)]">
+                We connect world-class African talent with companies that need{" "}
+                <span className="text-gradient">reliable support.</span>
+              </h2>
+              <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+                Zenorva Support was founded in Cameroon with a simple belief: exceptional talent
+                shouldn't be limited by geography. We recruit, train, and manage dedicated
+                support engineers — then embed them directly into your team.
+              </p>
+              <p className="mt-4 text-muted-foreground leading-relaxed">
+                Every client works with a named engineer who understands their product deeply.
+                No ticket pools. No rotating agents. Just consistent, professional support — backed
+                by founder-level oversight and weekly accountability.
+              </p>
+
+              {/* Founder callout */}
+              <div className="mt-8 flex items-start gap-4 p-5 rounded-2xl bg-violet-light border border-violet/15">
+                <div className="h-11 w-11 rounded-full bg-[oklch(0.13_0.07_285)] text-white font-bold font-display inline-flex items-center justify-center flex-none text-base">
+                  KC
+                </div>
+                <div>
+                  <p className="text-sm text-[oklch(0.13_0.07_285)] leading-relaxed">
+                    <span className="font-semibold">Kwale Cedric, Founder —</span>{" "}
+                    "I started Zenorva Support because I saw firsthand how much talent exists here in
+                    Cameroon, and how little of the global opportunity reaches us. We're changing that —
+                    one dedicated engineer at a time."
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Right — visual pillars */}
+          <Reveal delay={120}>
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                {
+                  icon: <Globe2 className="h-6 w-6" />,
+                  title: "Based in Cameroon",
+                  text: "UTC+1 — perfectly aligned with European working hours. Bilingual EN/FR as standard.",
+                },
+                {
+                  icon: <ShieldCheck className="h-6 w-6" />,
+                  title: "Founder-Led",
+                  text: "No layers between you and leadership. Direct oversight on every engagement.",
+                },
+                {
+                  icon: <Users className="h-6 w-6" />,
+                  title: "Dedicated, Not Shared",
+                  text: "Your engineer works exclusively for you — learning your product, your voice, your customers.",
+                },
+                {
+                  icon: <BadgeCheck className="h-6 w-6" />,
+                  title: "Quality Guaranteed",
+                  text: "Structured onboarding, weekly QA checks, and transparent performance reporting every Monday.",
+                },
+              ].map((p, i) => (
+                <Reveal key={p.title} delay={i * 60 + 140}>
+                  <div className="h-full rounded-2xl border border-border bg-white p-5 hover:border-violet/30 hover:shadow-[0_6px_24px_oklch(0.55_0.25_285/0.08)] transition-all duration-300">
+                    <div className="h-11 w-11 rounded-xl bg-violet-light inline-flex items-center justify-center text-violet mb-4">
+                      {p.icon}
+                    </div>
+                    <h3 className="font-display font-semibold text-[oklch(0.13_0.07_285)] text-sm">{p.title}</h3>
+                    <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">{p.text}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ───── Our Stats ───── */
+function OurStats() {
+  return (
+    <section className="py-20 bg-[oklch(0.13_0.07_285)] relative overflow-hidden">
+      <div className="absolute inset-0 bg-grid-dots" aria-hidden="true" />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        aria-hidden="true"
+        style={{
+          background: "radial-gradient(55% 70% at 50% 110%, oklch(0.55 0.25 285 / 0.25), transparent 60%)",
+        }}
+      />
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Reveal>
+          <p className="text-center text-xs font-semibold tracking-[0.2em] uppercase text-white/40 mb-12">
+            Our Stats
+          </p>
+        </Reveal>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/8 rounded-2xl overflow-hidden">
+          {[
+            { icon: <BarChart3 className="h-5 w-5" />, value: <><StatCounter value={98} suffix="%" /></>, label: "QA Score Target" },
+            { icon: <Clock className="h-5 w-5" />, value: <>&lt;&nbsp;<StatCounter value={4} />&nbsp;min</>, label: "Avg. First Response" },
+            { icon: <TrendingDown className="h-5 w-5" />, value: <><StatCounter value={40} />–<StatCounter value={60} suffix="%" /></>, label: "Cost Reduction vs. In-House" },
+            { icon: <Languages className="h-5 w-5" />, value: <span className="text-[oklch(0.75_0.18_285)]">EN + FR</span>, label: "Bilingual Coverage" },
+          ].map((m, i) => (
+            <Reveal key={m.label} delay={i * 70}>
+              <div className="bg-[oklch(0.17_0.08_285)] px-6 py-10 text-center text-white flex flex-col items-center gap-3">
+                <div className="text-[oklch(0.72_0.20_285)] opacity-70">{m.icon}</div>
+                <div className="font-mono text-4xl md:text-5xl font-semibold text-[oklch(0.75_0.18_285)]">{m.value}</div>
+                <div className="text-xs text-white/45 leading-snug max-w-[120px]">{m.label}</div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
