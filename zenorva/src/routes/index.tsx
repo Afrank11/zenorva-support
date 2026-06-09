@@ -49,11 +49,11 @@ function HomePage() {
       <Hero />
       <AboutUs />
       <Problem />
+      <CostComparison />
       <BehindEngineer />
       <HowItWorksOverview />
       <OurStats />
       <TrustedBy />
-      <CostComparison />
       <PilotCallout />
       <Testimonials />
       <FinalCTA />
@@ -357,19 +357,22 @@ function Problem() {
 function OurStats() {
   const fields = ["SaaS Platforms", "FinTech", "E-Commerce", "Managed Services", "EdTech", "B2B Marketplaces"];
   return (
-    <section className="bg-[oklch(0.13_0.07_285)] relative overflow-hidden">
-      <div className="absolute inset-0 bg-grid-dots" aria-hidden="true" />
-      <div
-        className="absolute inset-0 pointer-events-none"
-        aria-hidden="true"
-        style={{ background: "radial-gradient(60% 80% at 50% 120%, oklch(0.55 0.25 285 / 0.22), transparent 60%)" }}
-      />
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+    <section className="bg-violet-light py-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal>
-          <p className="text-center text-xs font-semibold tracking-[0.22em] uppercase text-white/35 mb-10">
-            Our numbers
-          </p>
+          <SectionHeading
+            eyebrow="Our numbers"
+            title="Our numbers speak for themselves."
+          />
         </Reveal>
+        <div className="mt-12 bg-[oklch(0.13_0.07_285)] rounded-3xl overflow-hidden relative">
+          <div className="absolute inset-0 bg-grid-dots" aria-hidden="true" />
+          <div
+            className="absolute inset-0 pointer-events-none"
+            aria-hidden="true"
+            style={{ background: "radial-gradient(60% 80% at 50% 120%, oklch(0.55 0.25 285 / 0.22), transparent 60%)" }}
+          />
+        <div className="relative px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/8 rounded-2xl overflow-hidden mb-12">
           {[
             { icon: <BarChart3 className="h-5 w-5" />, value: <><StatCounter value={98} suffix="%" /></>, label: "QA Score Target" },
@@ -398,7 +401,9 @@ function OurStats() {
             </div>
           </div>
         </Reveal>
-      </div>
+        </div>{/* /relative inner */}
+      </div>{/* /dark rounded container */}
+      </div>{/* /max-w-7xl */}
     </section>
   );
 }
@@ -461,6 +466,7 @@ function BehindEngineer() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal>
           <SectionHeading
+            eyebrow="What do you get?"
             title="You Get More Than One Person"
             subtitle="Every Zenorva Support engagement is backed by a structured support layer — so your engineer always has what they need to perform."
           />
@@ -634,21 +640,22 @@ function PilotCallout() {
         <Reveal>
           <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-semibold backdrop-blur-sm mb-6">
             <Star className="h-3.5 w-3.5" aria-hidden="true" />
-            Low-Risk Entry Point
+            Zero risk. Real results.
           </span>
           <h2 className="font-display text-3xl md:text-4xl font-bold">
-            Not Ready to Commit?<br />Start With a 30-Day Pilot.
+            Interested? Start with a<br />30-Day Pilot — No Commitment.
           </h2>
           <p className="mt-5 text-lg text-white/80 max-w-2xl mx-auto leading-relaxed">
-            Test one dedicated engineer for 30 days. Defined KPIs. Weekly reporting. Cancel anytime.
-            Most clients scale to 2–5 engineers within 90 days.
+            Book a free discovery call. We'll listen, match you with the right engineer,
+            and launch a 30-day pilot with defined KPIs and weekly reporting.
+            If it doesn't feel right, you walk away — no fees, no strings.
           </p>
           <div className="mt-8">
             <CTAButton size="lg" variant="white" onClick={open}>
-              Start Your 30-Day Pilot
+              Book Your Free Discovery Call
             </CTAButton>
           </div>
-          <p className="mt-4 text-sm text-white/65">No setup fees. No long-term contract for the pilot.</p>
+          <p className="mt-4 text-sm text-white/65">No setup fees · No long-term contract · Cancel after pilot</p>
         </Reveal>
       </div>
     </section>
