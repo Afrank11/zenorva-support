@@ -351,7 +351,7 @@ function ProblemAndStats() {
           <Reveal delay={200}>
             <div className="rounded-2xl border-l-4 border-violet bg-violet-light/50 p-7">
               <p className="font-display text-lg md:text-xl text-[oklch(0.13_0.07_285)] leading-relaxed">
-                They come to us because they're tired of choosing between{" "}
+                Companies come to us because they're tired of choosing between{" "}
                 <span className="text-violet font-semibold">cost and quality.</span>{" "}
                 We exist to prove you don't have to — by connecting you with a dedicated engineer
                 who shows up every day, knows your product, and treats your customers like their own.
