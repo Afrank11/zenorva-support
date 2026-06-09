@@ -47,11 +47,12 @@ function HomePage() {
   return (
     <>
       <Hero />
-      <MetricsBar />
       <Problem />
       <HowItWorksOverview />
-      <ValueCards />
       <BehindEngineer />
+      <TrustedBy />
+      <ValueCards />
+      <MetricsBar />
       <CostComparison />
       <PilotCallout />
       <PartnerSection />
@@ -147,24 +148,31 @@ function Hero() {
           </div>
         </div>
 
-        {/* Trust logos */}
-        <Reveal delay={350} variant="fade">
-          <div className="mt-16 pt-8 border-t border-white/8">
-            <p className="text-[11px] uppercase tracking-[0.22em] text-white/40 text-center mb-5">
-              Trusted by growing companies in:
-            </p>
-            <div className="flex flex-wrap justify-center gap-x-10 gap-y-3 text-sm text-white/35">
-              {[
-                "FinTech Startup",
-                "E-Commerce SME",
-                "SaaS Platform",
-                "Managed Services",
-                "B2B Marketplace",
-                "EdTech Scaleup",
-              ].map((n) => (
-                <span key={n} className="font-display font-medium tracking-wide">{n}</span>
-              ))}
-            </div>
+      </div>
+    </section>
+  );
+}
+
+/* ───── Trusted By ───── */
+function TrustedBy() {
+  return (
+    <section className="py-10 bg-white border-b border-border">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Reveal variant="fade">
+          <p className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground/60 text-center mb-5">
+            Trusted by growing companies in:
+          </p>
+          <div className="flex flex-wrap justify-center gap-x-10 gap-y-3 text-sm text-foreground/40">
+            {[
+              "FinTech Startup",
+              "E-Commerce SME",
+              "SaaS Platform",
+              "Managed Services",
+              "B2B Marketplace",
+              "EdTech Scaleup",
+            ].map((n) => (
+              <span key={n} className="font-display font-medium tracking-wide">{n}</span>
+            ))}
           </div>
         </Reveal>
       </div>
