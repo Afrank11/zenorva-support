@@ -53,7 +53,6 @@ function HomePage() {
       <BehindEngineer />
       <HowItWorksOverview />
       <OurStats />
-      <TrustedBy />
       <PilotCallout />
       <Testimonials />
       <FinalCTA />
@@ -421,7 +420,7 @@ function HowItWorksOverview() {
     <section className="py-24 bg-[oklch(0.20_0.09_285)] bg-grid-lines">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal>
-          <SectionHeading inverted title="And A Simpler Way to Scale Support" />
+          <SectionHeading inverted title="You Get A Simpler Way to Scale Support" />
         </Reveal>
         <div className="mt-14 relative">
           <div

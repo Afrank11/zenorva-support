@@ -105,13 +105,32 @@ export function BookCallProvider({ children }: { children: ReactNode }) {
                 ))}
               </ul>
 
+              {/* ─── Calendly embed ───────────────────────────────────────
+                  Replace the div below with your Calendly inline widget.
+                  Example:
+                    <div
+                      className="calendly-inline-widget"
+                      data-url="https://calendly.com/YOUR_LINK"
+                      style={{ minWidth: 320, height: 630 }}
+                    />
+                  Then add the Calendly script in index.html:
+                    <script src="https://assets.calendly.com/assets/external/widget.js" async />
+              ─────────────────────────────────────────────────────────── */}
+              <div className="rounded-xl border-2 border-dashed border-violet/25 bg-violet-light/40 p-6 text-center mb-5">
+                <div className="h-10 w-10 rounded-full bg-violet-light inline-flex items-center justify-center text-violet mx-auto mb-3">
+                  <PhoneCall className="h-5 w-5" />
+                </div>
+                <p className="text-sm font-semibold text-[oklch(0.13_0.07_285)]">Calendly booking coming soon</p>
+                <p className="text-xs text-muted-foreground mt-1">In the meantime, send us an email and we'll confirm a time within 1 business day.</p>
+              </div>
+
               <a href="mailto:hello@zenorvasupport.com?subject=Book%20a%20free%20discovery%20call" className="block">
                 <CTAButton variant="primary" className="w-full">
-                  Send us an email to book
+                  Email us to book your call
                 </CTAButton>
               </a>
               <p className="mt-3 text-xs text-muted-foreground text-center">
-                Or reach out directly — <span className="font-medium text-[oklch(0.13_0.07_285)]">hello@zenorvasupport.com</span>
+                <span className="font-medium text-[oklch(0.13_0.07_285)]">hello@zenorvasupport.com</span>
               </p>
             </div>
           </div>
