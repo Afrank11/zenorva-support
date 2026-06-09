@@ -20,7 +20,7 @@ function AboutPage() {
   const { open } = useBookCall();
   return (
     <>
-      <section className="bg-navy text-white pt-32 pb-20 relative overflow-hidden">
+      <section className="bg-[oklch(0.13_0.07_285)] text-white pt-24 pb-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-dots opacity-50" aria-hidden="true" />
         <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="font-display text-4xl md:text-5xl lg:text-[56px] font-bold leading-[1.05]">

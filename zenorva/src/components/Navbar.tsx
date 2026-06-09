@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Logo } from "./Logo";
 import { CTAButton } from "./CTAButton";
@@ -18,6 +18,9 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { open } = useBookCall();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+
+  const isHome = pathname === "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -26,12 +29,14 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const onDark = !scrolled && !mobileOpen;
+  // Transparent dark treatment ONLY on home page hero; always solid on inner pages
+  const onDark = isHome && !scrolled && !mobileOpen;
+  const solidBg = scrolled || mobileOpen || !isHome;
 
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled || mobileOpen
+        solidBg
           ? "bg-white/95 backdrop-blur-md border-b border-border shadow-[0_1px_16px_oklch(0.55_0.25_285/0.06)]"
           : "bg-transparent"
       }`}
@@ -53,7 +58,7 @@ export function Navbar() {
                 activeProps={{
                   className: onDark
                     ? "text-white"
-                    : "text-[oklch(0.55_0.25_285)] font-semibold",
+                    : "text-violet font-semibold",
                 }}
               >
                 {l.label}
@@ -64,13 +69,13 @@ export function Navbar() {
           <div className="hidden lg:flex items-center gap-3">
             <Link
               to="/contact"
-              className={`text-sm font-medium ${
+              className={`text-sm font-medium transition-colors ${
                 onDark
                   ? "text-white/80 hover:text-white"
                   : "text-foreground/75 hover:text-[oklch(0.13_0.07_285)]"
               }`}
             >
-              Sign In
+              Contact
             </Link>
             <CTAButton size="md" onClick={open}>Book a Free Call</CTAButton>
           </div>
