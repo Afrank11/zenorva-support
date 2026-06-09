@@ -323,7 +323,7 @@ function Problem() {
         <Reveal>
           <SectionHeading
             eyebrow="Why companies come to us"
-            title="Support costs are eating their margins."
+            title="Support costs are eating margins."
           />
         </Reveal>
         <Reveal delay={80}>
