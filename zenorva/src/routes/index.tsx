@@ -327,6 +327,14 @@ function Problem() {
             title="Support costs are eating their margins."
           />
         </Reveal>
+        <Reveal delay={80}>
+          <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto text-center">
+            Every company we talk to is dealing with the same frustration: quality support costs too much,
+            hiring takes forever, and cheap alternatives always disappoint. We built Zenorva Support to{" "}
+            <span className="text-[oklch(0.13_0.07_285)] font-semibold">change that equation</span> — one
+            dedicated engineer at a time.
+          </p>
+        </Reveal>
         <div className="mt-12 grid md:grid-cols-3 gap-6">
           {items.map((it, i) => (
             <Reveal key={it.title} delay={i * 90}>
@@ -340,16 +348,6 @@ function Problem() {
             </Reveal>
           ))}
         </div>
-        <Reveal delay={200}>
-          <div className="mt-10 mx-auto max-w-4xl rounded-2xl border-l-4 border-violet bg-violet-light/50 p-7">
-            <p className="font-display text-lg md:text-xl text-[oklch(0.13_0.07_285)] leading-relaxed">
-              Companies come to us because they're tired of choosing between{" "}
-              <span className="text-violet font-semibold">cost and quality.</span>{" "}
-              We exist to prove you don't have to — by connecting you with a dedicated engineer
-              who shows up every day, knows your product, and treats your customers like their own.
-            </p>
-          </div>
-        </Reveal>
       </div>
     </section>
   );
