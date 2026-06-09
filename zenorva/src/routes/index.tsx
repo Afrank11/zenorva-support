@@ -48,11 +48,11 @@ function HomePage() {
     <>
       <Hero />
       <AboutUs />
-      <ProblemAndStats />
-      <HowItWorksOverview />
+      <Problem />
       <BehindEngineer />
+      <HowItWorksOverview />
+      <OurStats />
       <TrustedBy />
-      <ValueCards />
       <CostComparison />
       <PilotCallout />
       <Testimonials />
@@ -272,7 +272,7 @@ function DashStat({ label, value }: { label: string; value: string }) {
 /* ───── About Us ───── */
 function AboutUs() {
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-violet-light">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
         <Reveal>
           <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-violet mb-4">
@@ -298,8 +298,8 @@ function AboutUs() {
   );
 }
 
-/* ───── Problem + Stats (combined) ───── */
-function ProblemAndStats() {
+/* ───── Problem ───── */
+function Problem() {
   const items = [
     {
       icon: <TrendingDown className="h-6 w-6" />,
@@ -318,16 +318,13 @@ function ProblemAndStats() {
     },
   ];
 
-  const fields = ["SaaS Platforms", "FinTech", "E-Commerce", "Managed Services", "EdTech", "B2B Marketplaces"];
-
   return (
-    <section className="bg-white">
-      {/* Problem cards */}
-      <div className="py-20 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-white">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal>
           <SectionHeading
             eyebrow="Why companies come to us"
-            title="Your support costs are eating your margins."
+            title="Support costs are eating their margins."
           />
         </Reveal>
         <div className="mt-12 grid md:grid-cols-3 gap-6">
@@ -343,74 +340,66 @@ function ProblemAndStats() {
             </Reveal>
           ))}
         </div>
-      </div>
-
-      {/* Closing statement */}
-      <div className="pb-16 bg-white">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <Reveal delay={200}>
-            <div className="rounded-2xl border-l-4 border-violet bg-violet-light/50 p-7">
-              <p className="font-display text-lg md:text-xl text-[oklch(0.13_0.07_285)] leading-relaxed">
-                Companies come to us because they're tired of choosing between{" "}
-                <span className="text-violet font-semibold">cost and quality.</span>{" "}
-                We exist to prove you don't have to — by connecting you with a dedicated engineer
-                who shows up every day, knows your product, and treats your customers like their own.
-              </p>
-            </div>
-          </Reveal>
-        </div>
-      </div>
-
-      {/* Stats band */}
-      <div className="bg-[oklch(0.13_0.07_285)] relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid-dots" aria-hidden="true" />
-        <div
-          className="absolute inset-0 pointer-events-none"
-          aria-hidden="true"
-          style={{ background: "radial-gradient(60% 80% at 50% 120%, oklch(0.55 0.25 285 / 0.22), transparent 60%)" }}
-        />
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-          <Reveal>
-            <p className="text-center text-xs font-semibold tracking-[0.22em] uppercase text-white/35 mb-10">
-              Our numbers
+        <Reveal delay={200}>
+          <div className="mt-10 mx-auto max-w-4xl rounded-2xl border-l-4 border-violet bg-violet-light/50 p-7">
+            <p className="font-display text-lg md:text-xl text-[oklch(0.13_0.07_285)] leading-relaxed">
+              Companies come to us because they're tired of choosing between{" "}
+              <span className="text-violet font-semibold">cost and quality.</span>{" "}
+              We exist to prove you don't have to — by connecting you with a dedicated engineer
+              who shows up every day, knows your product, and treats your customers like their own.
             </p>
-          </Reveal>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/8 rounded-2xl overflow-hidden mb-12">
-            {[
-              { icon: <BarChart3 className="h-5 w-5" />, value: <><StatCounter value={98} suffix="%" /></>, label: "QA Score Target" },
-              { icon: <Clock className="h-5 w-5" />, value: <>&lt;&thinsp;<StatCounter value={4} />&thinsp;min</>, label: "Avg. First Response" },
-              { icon: <TrendingDown className="h-5 w-5" />, value: <><StatCounter value={40} />–<StatCounter value={60} suffix="%" /></>, label: "Cost Reduction vs. In-House" },
-              { icon: <Languages className="h-5 w-5" />, value: <span className="text-[oklch(0.75_0.18_285)]">EN + FR</span>, label: "Bilingual Coverage" },
-            ].map((m, i) => (
-              <Reveal key={m.label} delay={i * 70}>
-                <div className="bg-[oklch(0.17_0.08_285)] px-6 py-10 text-center text-white flex flex-col items-center gap-2">
-                  <div className="text-[oklch(0.72_0.20_285)] opacity-60">{m.icon}</div>
-                  <div className="font-mono text-4xl md:text-5xl font-semibold text-[oklch(0.75_0.18_285)]">{m.value}</div>
-                  <div className="text-[11px] text-white/40 leading-snug max-w-[110px]">{m.label}</div>
-                </div>
-              </Reveal>
-            ))}
           </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
 
-          {/* Emerging fields */}
-          <Reveal variant="fade" delay={200}>
-            <div className="text-center">
-              <p className="text-sm text-white/50 mb-4">
-                We serve clients from fast-growing fields including:
-              </p>
-              <div className="flex flex-wrap justify-center gap-3">
-                {fields.map((f) => (
-                  <span
-                    key={f}
-                    className="px-4 py-1.5 rounded-full border border-white/12 bg-white/5 text-xs font-medium text-white/60 backdrop-blur-sm"
-                  >
-                    {f}
-                  </span>
-                ))}
+/* ───── Our Stats ───── */
+function OurStats() {
+  const fields = ["SaaS Platforms", "FinTech", "E-Commerce", "Managed Services", "EdTech", "B2B Marketplaces"];
+  return (
+    <section className="bg-[oklch(0.13_0.07_285)] relative overflow-hidden">
+      <div className="absolute inset-0 bg-grid-dots" aria-hidden="true" />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        aria-hidden="true"
+        style={{ background: "radial-gradient(60% 80% at 50% 120%, oklch(0.55 0.25 285 / 0.22), transparent 60%)" }}
+      />
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+        <Reveal>
+          <p className="text-center text-xs font-semibold tracking-[0.22em] uppercase text-white/35 mb-10">
+            Our numbers
+          </p>
+        </Reveal>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/8 rounded-2xl overflow-hidden mb-12">
+          {[
+            { icon: <BarChart3 className="h-5 w-5" />, value: <><StatCounter value={98} suffix="%" /></>, label: "QA Score Target" },
+            { icon: <Clock className="h-5 w-5" />, value: <>&lt;&thinsp;<StatCounter value={4} />&thinsp;min</>, label: "Avg. First Response" },
+            { icon: <TrendingDown className="h-5 w-5" />, value: <><StatCounter value={40} />–<StatCounter value={60} suffix="%" /></>, label: "Cost Reduction vs. In-House" },
+            { icon: <Languages className="h-5 w-5" />, value: <span className="text-[oklch(0.75_0.18_285)]">EN + FR</span>, label: "Bilingual Coverage" },
+          ].map((m, i) => (
+            <Reveal key={m.label} delay={i * 70}>
+              <div className="bg-[oklch(0.17_0.08_285)] px-6 py-10 text-center text-white flex flex-col items-center gap-2">
+                <div className="text-[oklch(0.72_0.20_285)] opacity-60">{m.icon}</div>
+                <div className="font-mono text-4xl md:text-5xl font-semibold text-[oklch(0.75_0.18_285)]">{m.value}</div>
+                <div className="text-[11px] text-white/40 leading-snug max-w-[110px]">{m.label}</div>
               </div>
-            </div>
-          </Reveal>
+            </Reveal>
+          ))}
         </div>
+        <Reveal variant="fade" delay={200}>
+          <div className="text-center">
+            <p className="text-sm text-white/50 mb-4">We serve clients from fast-growing fields including:</p>
+            <div className="flex flex-wrap justify-center gap-3">
+              {fields.map((f) => (
+                <span key={f} className="px-4 py-1.5 rounded-full border border-white/12 bg-white/5 text-xs font-medium text-white/60 backdrop-blur-sm">
+                  {f}
+                </span>
+              ))}
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -426,10 +415,10 @@ function HowItWorksOverview() {
   ];
 
   return (
-    <section className="py-24 bg-surface bg-grid-lines">
+    <section className="py-24 bg-[oklch(0.20_0.09_285)] bg-grid-lines">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal>
-          <SectionHeading title="A Simpler Way to Scale Support" />
+          <SectionHeading inverted title="And A Simpler Way to Scale Support" />
         </Reveal>
         <div className="mt-14 relative">
           <div
@@ -441,12 +430,12 @@ function HowItWorksOverview() {
             {steps.map((s, i) => (
               <Reveal key={s.n} delay={i * 90}>
                 <li className="relative text-center">
-                  <div className="mx-auto h-14 w-14 rounded-2xl bg-white border-2 border-violet/30 text-violet inline-flex items-center justify-center shadow-[0_4px_16px_oklch(0.55_0.25_285/0.15)] relative z-10">
+                  <div className="mx-auto h-14 w-14 rounded-2xl bg-[oklch(0.13_0.07_285)] border-2 border-violet/50 text-[oklch(0.75_0.18_285)] inline-flex items-center justify-center shadow-[0_4px_16px_oklch(0.55_0.25_285/0.3)] relative z-10">
                     {s.icon}
                   </div>
-                  <div className="mt-1 font-mono text-[11px] text-violet/60">{String(s.n).padStart(2, "0")}</div>
-                  <h3 className="mt-2 font-display font-semibold text-[oklch(0.13_0.07_285)]">{s.t}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.d}</p>
+                  <div className="mt-1 font-mono text-[11px] text-[oklch(0.72_0.20_285)]/70">{String(s.n).padStart(2, "0")}</div>
+                  <h3 className="mt-2 font-display font-semibold text-white">{s.t}</h3>
+                  <p className="mt-2 text-sm text-white/50 leading-relaxed">{s.d}</p>
                 </li>
               </Reveal>
             ))}
@@ -455,7 +444,7 @@ function HowItWorksOverview() {
         <div className="mt-10 text-center">
           <Link
             to="/how-it-works"
-            className="group inline-flex items-center gap-1.5 text-violet font-semibold hover:underline text-sm"
+            className="group inline-flex items-center gap-1.5 text-[oklch(0.75_0.18_285)] font-semibold hover:underline text-sm"
           >
             See the full process
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
@@ -466,57 +455,6 @@ function HowItWorksOverview() {
   );
 }
 
-/* ───── Value Cards ───── */
-function ValueCards() {
-  const cards = [
-    {
-      icon: <Users className="h-6 w-6" />,
-      title: "Dedicated Engineer",
-      text: "Your engineer works exclusively for you — not a shared pool. They learn your product, tone, and workflows deeply.",
-    },
-    {
-      icon: <BarChart3 className="h-6 w-6" />,
-      title: "40–60% Cost Reduction",
-      text: "Compare $4,000+/month for a US hire vs. $900/month with us. Same quality. Different geography.",
-    },
-    {
-      icon: <Globe2 className="h-6 w-6" />,
-      title: "Bilingual: EN & FR",
-      text: "Our engineers support both English and French-speaking customers — a rare advantage that most providers cannot match.",
-    },
-    {
-      icon: <ShieldCheck className="h-6 w-6" />,
-      title: "Founder-Led Quality",
-      text: "Every engineer is supervised by our operations lead. Weekly reporting, SLA tracking, and escalation management included.",
-    },
-  ];
-
-  return (
-    <section className="py-24 bg-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <Reveal>
-          <SectionHeading
-            title="Everything Included, Nothing Hidden"
-            subtitle="When you work with Zenorva Support, you're not just getting an agent. You're getting a managed support operation — without the overhead."
-          />
-        </Reveal>
-        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {cards.map((c, i) => (
-            <Reveal key={c.title} delay={i * 70}>
-              <div className="group h-full rounded-2xl border border-border bg-white p-6 hover:border-violet/30 hover:shadow-[0_8px_30px_oklch(0.55_0.25_285/0.1)] hover:-translate-y-1 transition-all duration-300">
-                <div className="h-12 w-12 rounded-xl bg-violet-light inline-flex items-center justify-center text-violet">
-                  {c.icon}
-                </div>
-                <h3 className="mt-5 font-display font-semibold text-[oklch(0.13_0.07_285)] text-lg">{c.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{c.text}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 /* ───── Behind Your Engineer ───── */
 function BehindEngineer() {
