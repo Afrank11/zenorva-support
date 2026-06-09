@@ -24,7 +24,7 @@ function AboutPage() {
         <div className="absolute inset-0 bg-grid-dots opacity-50" aria-hidden="true" />
         <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="font-display text-4xl md:text-5xl lg:text-[56px] font-bold leading-[1.05]">
-            Built on a Simple Belief: <span className="text-teal">African Talent Deserves a Global Stage</span>
+            Built on a Simple Belief: <span className="text-gradient">African Talent Deserves a Global Stage</span>
           </h1>
           <p className="mt-6 text-lg text-white/70 max-w-2xl mx-auto">
             Zenorva Support was founded in Cameroon to connect world-class local talent with international companies that need reliable, affordable support — without the tradeoffs.
@@ -52,12 +52,18 @@ function AboutPage() {
       <section className="py-20 bg-surface">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <Reveal>
-            <div className="grid md:grid-cols-[200px_1fr] gap-8 md:gap-12 items-start rounded-2xl bg-white border border-border p-8 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
-              <div className="mx-auto md:mx-0 h-40 w-40 rounded-full bg-teal/15 inline-flex items-center justify-center font-display font-bold text-5xl text-teal ring-4 ring-white shadow-md">
+            <div className="text-xs font-semibold tracking-[0.18em] uppercase text-teal mb-3">The people behind it</div>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-navy mb-12">Meet the founding team.</h2>
+          </Reveal>
+
+          {/* CEO — full-width featured card */}
+          <Reveal>
+            <div className="grid md:grid-cols-[200px_1fr] gap-8 md:gap-12 items-start rounded-2xl bg-white border border-border p-8 shadow-[0_1px_3px_rgba(0,0,0,0.04)] mb-6">
+              <div className="mx-auto md:mx-0 h-40 w-40 rounded-full bg-teal/15 inline-flex items-center justify-center font-display font-bold text-5xl text-teal ring-4 ring-white shadow-md flex-none">
                 KC
               </div>
               <div>
-                <div className="text-xs font-semibold tracking-[0.18em] uppercase text-teal">Founder & Operations Lead</div>
+                <div className="text-xs font-semibold tracking-[0.18em] uppercase text-teal">CEO & Co-Founder</div>
                 <h3 className="mt-2 font-display text-2xl md:text-3xl font-bold text-navy">Kwale Cedric</h3>
                 <p className="mt-4 text-muted-foreground leading-relaxed">
                   Based in Cameroon, Kwale leads every client engagement personally — from the first discovery call
@@ -65,9 +71,58 @@ function AboutPage() {
                   escalation management. When you work with Zenorva Support, you work with the founder. There are no
                   layers, no account managers, no hand-offs to people who don't know your account.
                 </p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {["Operations", "Client Relations", "Strategy", "Quality Control"].map((t) => (
+                    <span key={t} className="px-3 py-1 rounded-full bg-teal/10 text-teal text-[11px] font-semibold tracking-wide">
+                      {t}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </Reveal>
+
+          {/* CTO + COO — side by side */}
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              {
+                initials: "FA",
+                role: "CTO & Co-Founder",
+                name: "Ateh Frank Ateh",
+                bio: "Fullstack developer and network engineer, Frank architects the technical foundation that powers Zenorva Support. From tooling integrations to infrastructure, he ensures the systems are reliable, secure, and built to scale with every client we bring on.",
+                tags: ["Fullstack Development", "Network Engineering", "Systems Architecture"],
+              },
+              {
+                initials: "MT",
+                role: "COO & Co-Founder",
+                name: "Mbi Bocav Tsewele",
+                bio: "Marketing lead and operations co-pilot, Mbi drives how the world sees Zenorva Support. He shapes brand positioning, lead generation, and partnership strategy — ensuring that as we grow, we stay true to the mission and quality that defines us.",
+                tags: ["Marketing", "Growth Strategy", "Brand & Partnerships"],
+              },
+            ].map((m, i) => (
+              <Reveal key={m.name} delay={i * 100}>
+                <div className="h-full rounded-2xl bg-white border border-border p-7 shadow-[0_1px_3px_rgba(0,0,0,0.04)] flex flex-col">
+                  <div className="flex items-center gap-4 mb-5">
+                    <div className="h-16 w-16 rounded-full bg-teal/15 inline-flex items-center justify-center font-display font-bold text-2xl text-teal ring-2 ring-white shadow-sm flex-none">
+                      {m.initials}
+                    </div>
+                    <div>
+                      <div className="text-xs font-semibold tracking-[0.16em] uppercase text-teal">{m.role}</div>
+                      <h3 className="mt-1 font-display text-xl font-bold text-navy">{m.name}</h3>
+                    </div>
+                  </div>
+                  <p className="text-muted-foreground leading-relaxed text-sm flex-1">{m.bio}</p>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {m.tags.map((t) => (
+                      <span key={t} className="px-3 py-1 rounded-full bg-teal/10 text-teal text-[11px] font-semibold tracking-wide">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
