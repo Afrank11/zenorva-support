@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Logo } from "./Logo";
 import { CTAButton } from "./CTAButton";
 import { useBookCall } from "./BookCallModal";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { to: "/services", label: "Services" },
@@ -31,7 +32,7 @@ export function Navbar() {
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
         scrolled || mobileOpen
-          ? "bg-white/95 backdrop-blur border-b border-border shadow-[0_1px_3px_rgba(0,0,0,0.04)]"
+          ? "bg-white/95 backdrop-blur-md border-b border-border shadow-[0_1px_16px_oklch(0.55_0.25_285/0.06)]"
           : "bg-transparent"
       }`}
     >
@@ -45,9 +46,15 @@ export function Navbar() {
                 key={l.to}
                 to={l.to}
                 className={`text-sm font-medium transition-colors ${
-                  onDark ? "text-white/85 hover:text-white" : "text-foreground/80 hover:text-navy"
+                  onDark
+                    ? "text-white/80 hover:text-white"
+                    : "text-foreground/75 hover:text-[oklch(0.13_0.07_285)]"
                 }`}
-                activeProps={{ className: onDark ? "text-white" : "text-navy" }}
+                activeProps={{
+                  className: onDark
+                    ? "text-white"
+                    : "text-[oklch(0.55_0.25_285)] font-semibold",
+                }}
               >
                 {l.label}
               </Link>
@@ -57,7 +64,11 @@ export function Navbar() {
           <div className="hidden lg:flex items-center gap-3">
             <Link
               to="/contact"
-              className={`text-sm font-medium ${onDark ? "text-white/85 hover:text-white" : "text-foreground/80 hover:text-navy"}`}
+              className={`text-sm font-medium ${
+                onDark
+                  ? "text-white/80 hover:text-white"
+                  : "text-foreground/75 hover:text-[oklch(0.13_0.07_285)]"
+              }`}
             >
               Sign In
             </Link>
@@ -65,31 +76,32 @@ export function Navbar() {
           </div>
 
           <div className="flex lg:hidden items-center gap-2">
-            <CTAButton size="md" onClick={open} className="!px-4 !py-2 text-xs">Book a Call</CTAButton>
+            <CTAButton size="md" onClick={open} className="!px-4 !py-2 text-xs">
+              Book a Call
+            </CTAButton>
             <button
               aria-label="Toggle menu"
               aria-expanded={mobileOpen}
               onClick={() => setMobileOpen((v) => !v)}
-              className={`h-10 w-10 inline-flex flex-col items-center justify-center gap-1.5 rounded-md ${
+              className={`h-10 w-10 inline-flex items-center justify-center rounded-md ${
                 onDark ? "text-white" : "text-foreground"
               }`}
             >
-              <span className={`block h-0.5 w-5 bg-current transition ${mobileOpen ? "translate-y-2 rotate-45" : ""}`} />
-              <span className={`block h-0.5 w-5 bg-current transition ${mobileOpen ? "opacity-0" : ""}`} />
-              <span className={`block h-0.5 w-5 bg-current transition ${mobileOpen ? "-translate-y-2 -rotate-45" : ""}`} />
+              {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
 
         {mobileOpen && (
-          <div className="lg:hidden pb-4 pt-2 animate-fade-in-up">
+          <div className="lg:hidden pb-4 pt-2 border-t border-border mt-1">
             <nav className="flex flex-col gap-1" aria-label="Mobile">
               {navLinks.map((l) => (
                 <Link
                   key={l.to}
                   to={l.to}
                   onClick={() => setMobileOpen(false)}
-                  className="px-2 py-3 text-base font-medium text-foreground hover:bg-secondary rounded-md"
+                  className="px-3 py-3 text-base font-medium text-foreground hover:bg-violet-light hover:text-violet rounded-lg transition-colors"
+                  activeProps={{ className: "text-violet bg-violet-light font-semibold" }}
                 >
                   {l.label}
                 </Link>
@@ -97,7 +109,7 @@ export function Navbar() {
               <Link
                 to="/contact"
                 onClick={() => setMobileOpen(false)}
-                className="px-2 py-3 text-base font-medium text-foreground hover:bg-secondary rounded-md"
+                className="px-3 py-3 text-base font-medium text-foreground hover:bg-violet-light hover:text-violet rounded-lg transition-colors"
               >
                 Contact
               </Link>

@@ -35,9 +35,14 @@ export function StatCounter({
     return () => cancelAnimationFrame(raf);
   }, [inView, value, duration]);
 
+  const formatted =
+    value >= 1000
+      ? Math.round(n).toLocaleString("en-US")
+      : n.toFixed(decimals);
+
   return (
     <span ref={ref} className={`font-mono ${className}`}>
-      {prefix}{n.toFixed(decimals)}{suffix}
+      {prefix}{formatted}{suffix}
     </span>
   );
 }

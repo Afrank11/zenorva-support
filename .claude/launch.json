@@ -1,0 +1,16 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "zenorva-dev",
+      "runtimeExecutable": "C:\\Program Files\\nodejs\\node.exe",
+      "runtimeArgs": [
+        "C:\\Users\\ACER GAMING\\Desktop\\Business\\Customer Service Site\\zenorva support v1\\zenorva\\node_modules\\vite\\bin\\vite.js",
+        "dev",
+        "--port", "5173"
+      ],
+      "port": 5173,
+      "cwd": "C:\\Users\\ACER GAMING\\Desktop\\Business\\Customer Service Site\\zenorva support v1\\zenorva"
+    }
+  ]
+}

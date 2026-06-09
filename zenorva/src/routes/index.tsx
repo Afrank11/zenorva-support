@@ -1,5 +1,23 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
+import { motion } from "framer-motion";
+import {
+  CheckCircle2,
+  Users,
+  BarChart3,
+  Globe2,
+  ShieldCheck,
+  ArrowRight,
+  Zap,
+  Clock,
+  TrendingDown,
+  Languages,
+  BadgeCheck,
+  PhoneCall,
+  ClipboardList,
+  LineChart,
+  Star,
+} from "lucide-react";
 import { CTAButton } from "@/components/CTAButton";
 import { useBookCall } from "@/components/BookCallModal";
 import { StatCounter } from "@/components/StatCounter";
@@ -9,13 +27,13 @@ import { Reveal } from "@/components/Reveal";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Zenorva Support — Dedicated support engineers from Cameroon" },
+      { title: "Zenorva Support — Dedicated Support Engineers from Cameroon" },
       {
         name: "description",
         content:
           "Bilingual EN/FR Tier-1 support engineers from Cameroon for SaaS, MSPs and SMEs. 40–60% lower cost. Founder-led quality control.",
       },
-      { property: "og:title", content: "Zenorva Support — Dedicated support engineers from Cameroon" },
+      { property: "og:title", content: "Zenorva Support — Dedicated Support Engineers from Cameroon" },
       {
         property: "og:description",
         content: "World-class support teams at African cost efficiency. Bilingual EN/FR. Founder-led oversight.",
@@ -43,59 +61,77 @@ function HomePage() {
   );
 }
 
-/* ───── Section 1: Hero ───── */
+/* ───── Hero ───── */
 function Hero() {
   const { open } = useBookCall();
+
   return (
-    <section className="relative bg-navy text-white overflow-hidden pt-28 lg:pt-32">
-      <div className="absolute inset-0 bg-grid-dots opacity-60" aria-hidden="true" />
+    <section className="relative bg-[oklch(0.13_0.07_285)] text-white overflow-hidden pt-28 lg:pt-32 min-h-svh flex flex-col justify-center">
+      {/* Dot grid */}
+      <div className="absolute inset-0 bg-grid-dots" aria-hidden="true" />
+
+      {/* Atmospheric glow blobs */}
       <div
-        className="absolute inset-0 opacity-40 pointer-events-none"
+        className="absolute pointer-events-none"
         aria-hidden="true"
         style={{
-          background:
-            "radial-gradient(60% 50% at 80% 10%, oklch(0.78 0.14 175 / 0.18), transparent 60%), radial-gradient(40% 40% at 0% 100%, oklch(0.78 0.14 175 / 0.12), transparent 60%)",
+          inset: 0,
+          background: [
+            "radial-gradient(55% 45% at 75% 5%, oklch(0.55 0.25 285 / 0.22), transparent 60%)",
+            "radial-gradient(40% 35% at 10% 85%, oklch(0.45 0.22 295 / 0.18), transparent 55%)",
+            "radial-gradient(30% 40% at 50% 50%, oklch(0.55 0.25 285 / 0.06), transparent 60%)",
+          ].join(", "),
         }}
       />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-24 lg:pb-32">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center min-h-[calc(90vh-7rem)]">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-24 lg:pb-32 w-full">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left */}
-          <div className="lg:col-span-7">
-            <Reveal>
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-medium text-white/80">
-                🌍 Serving Companies in Europe & North America
+          <div className="lg:col-span-6 xl:col-span-7">
+            <Reveal delay={0}>
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/6 px-4 py-1.5 text-xs font-medium text-white/75 backdrop-blur-sm">
+                <Globe2 className="h-3.5 w-3.5 text-[oklch(0.72_0.20_285)]" aria-hidden="true" />
+                Serving Companies in Europe & North America
               </span>
             </Reveal>
+
             <Reveal delay={80}>
-              <h1 className="mt-6 font-display font-bold text-[40px] sm:text-5xl lg:text-[56px] leading-[1.05] tracking-tight">
-                World-Class Customer Support Teams — at{" "}
-                <span className="text-teal">African Cost Efficiency</span>
+              <h1 className="mt-6 font-display font-bold text-[38px] sm:text-5xl lg:text-[54px] xl:text-[58px] leading-[1.06] tracking-tight">
+                World-Class Support Teams —{" "}
+                <span className="text-gradient">at African Cost Efficiency</span>
               </h1>
             </Reveal>
-            <Reveal delay={140}>
-              <p className="mt-6 text-lg lg:text-xl text-white/70 max-w-2xl leading-relaxed">
-                We provide dedicated, trained support engineers from Cameroon for SaaS companies and MSPs.
-                Reduce support costs by up to 60% — without compromising quality or response time.
+
+            <Reveal delay={150}>
+              <p className="mt-6 text-lg lg:text-xl text-white/65 max-w-xl leading-relaxed">
+                Dedicated, trained support engineers from Cameroon for SaaS companies and MSPs. Reduce support
+                costs by up to <span className="text-white font-semibold">60%</span> — without sacrificing
+                quality or response time.
               </p>
             </Reveal>
-            <Reveal delay={200}>
+
+            <Reveal delay={220}>
               <div className="mt-8 flex flex-wrap gap-3">
-                <CTAButton size="lg" onClick={open}>Book a Free Consultation</CTAButton>
+                <CTAButton size="lg" onClick={open}>
+                  Book a Free Consultation
+                </CTAButton>
                 <Link to="/how-it-works">
-                  <CTAButton size="lg" variant="ghost-light" withArrow={false}>See How It Works</CTAButton>
+                  <CTAButton size="lg" variant="ghost-light" withArrow={false}>
+                    See How It Works
+                  </CTAButton>
                 </Link>
               </div>
             </Reveal>
-            <Reveal delay={260}>
-              <ul className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-white/70">
+
+            <Reveal delay={290}>
+              <ul className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2.5 text-sm text-white/65">
                 {[
-                  "No long-term contracts required",
-                  "30-day pilot program available",
+                  "No long-term contracts",
+                  "30-day pilot available",
                   "English & French support",
                 ].map((t) => (
                   <li key={t} className="flex items-center gap-2">
-                    <Check />
+                    <CheckCircle2 className="h-4 w-4 text-[oklch(0.72_0.20_285)] flex-none" aria-hidden="true" />
                     <span>{t}</span>
                   </li>
                 ))}
@@ -104,137 +140,220 @@ function Hero() {
           </div>
 
           {/* Right — dashboard mockup */}
-          <div className="lg:col-span-5">
-            <Reveal delay={200}>
+          <div className="lg:col-span-6 xl:col-span-5">
+            <Reveal delay={180} variant="scale">
               <DashboardMockup />
             </Reveal>
           </div>
         </div>
 
-        {/* Trusted by */}
-        <div className="mt-16 pt-8 border-t border-white/10">
-          <p className="text-xs uppercase tracking-[0.2em] text-white/50 text-center">Trusted by growing companies in:</p>
-          <div className="mt-5 flex flex-wrap justify-center gap-x-10 gap-y-3 text-sm text-white/40">
-            {["FinTech Startup", "E-Commerce SME", "SaaS Platform", "Managed Services Provider", "B2B Marketplace", "EdTech Scaleup"].map((n) => (
-              <span key={n} className="font-display font-medium tracking-wide">{n}</span>
-            ))}
+        {/* Trust logos */}
+        <Reveal delay={350} variant="fade">
+          <div className="mt-16 pt-8 border-t border-white/8">
+            <p className="text-[11px] uppercase tracking-[0.22em] text-white/40 text-center mb-5">
+              Trusted by growing companies in:
+            </p>
+            <div className="flex flex-wrap justify-center gap-x-10 gap-y-3 text-sm text-white/35">
+              {[
+                "FinTech Startup",
+                "E-Commerce SME",
+                "SaaS Platform",
+                "Managed Services",
+                "B2B Marketplace",
+                "EdTech Scaleup",
+              ].map((n) => (
+                <span key={n} className="font-display font-medium tracking-wide">{n}</span>
+              ))}
+            </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
-  );
-}
-
-function Check() {
-  return (
-    <svg viewBox="0 0 20 20" fill="none" className="h-4 w-4 text-teal flex-none" aria-hidden="true">
-      <path d="M4 10.5l3.5 3.5L16 5.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
   );
 }
 
 function DashboardMockup() {
   return (
-    <div className="relative">
+    <motion.div
+      className="relative"
+      animate={{ y: [0, -8, 0] }}
+      transition={{ duration: 4, ease: "easeInOut", repeat: Infinity }}
+    >
+      {/* Glow behind the card */}
       <div
-        className="rounded-2xl bg-navy-deep border border-white/10 shadow-2xl p-5 backdrop-blur"
-        style={{ boxShadow: "0 30px 60px -20px rgba(0,201,167,0.18), 0 10px 30px -10px rgba(0,0,0,0.5)" }}
+        className="absolute -inset-4 rounded-3xl opacity-40 blur-2xl"
+        aria-hidden="true"
+        style={{ background: "radial-gradient(ellipse, oklch(0.55 0.25 285 / 0.5), transparent 70%)" }}
+      />
+
+      <div
+        className="relative rounded-2xl bg-[oklch(0.20_0.09_285)] border border-white/10 shadow-2xl p-5"
+        style={{ backdropFilter: "blur(12px)" }}
       >
+        {/* Header */}
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded-full bg-teal/20 ring-2 ring-teal/40 inline-flex items-center justify-center text-xs font-semibold text-teal">KC</div>
+          <div className="flex items-center gap-2.5">
+            <div className="h-9 w-9 rounded-full bg-[oklch(0.55_0.25_285)]/20 ring-2 ring-[oklch(0.55_0.25_285)]/40 inline-flex items-center justify-center text-xs font-bold text-[oklch(0.75_0.18_285)]">
+              KC
+            </div>
             <div>
-              <div className="text-xs text-white/60">Your dedicated engineer</div>
-              <div className="text-sm font-medium text-white">Online · Yaoundé</div>
+              <div className="text-[11px] text-white/50">Your dedicated engineer</div>
+              <div className="text-sm font-semibold text-white">Online · Yaoundé 🟢</div>
             </div>
           </div>
-          <div className="text-[10px] uppercase tracking-wider text-teal font-semibold">Live</div>
+          <span className="text-[10px] uppercase tracking-widest text-[oklch(0.72_0.20_285)] font-semibold px-2 py-1 rounded-full bg-[oklch(0.55_0.25_285)]/15 border border-[oklch(0.55_0.25_285)]/25">
+            Live
+          </span>
         </div>
 
+        {/* Stats */}
         <div className="mt-5 grid grid-cols-2 gap-3">
-          <Stat label="Avg. response" value="4 min" />
-          <Stat label="CSAT" value="98.2%" />
+          <DashStat label="Avg. response" value="4 min" />
+          <DashStat label="CSAT score" value="98.2%" />
         </div>
 
+        {/* Ticket rows */}
         <div className="mt-5 space-y-2">
           {[
-            { id: "#4823", t: "Login error on Safari", s: "Resolved", c: "bg-success/15 text-success border-success/30" },
-            { id: "#4824", t: "Billing question — Pro plan", s: "In Progress", c: "bg-teal/15 text-teal border-teal/30" },
-            { id: "#4825", t: "API rate limit issue", s: "Escalated", c: "bg-warning/15 text-warning border-warning/30" },
+            {
+              id: "#4823",
+              title: "Login error on Safari",
+              status: "Resolved",
+              cls: "bg-emerald-500/12 text-emerald-400 border-emerald-500/25",
+            },
+            {
+              id: "#4824",
+              title: "Billing question — Pro plan",
+              status: "In Progress",
+              cls: "bg-[oklch(0.55_0.25_285)]/15 text-[oklch(0.75_0.18_285)] border-[oklch(0.55_0.25_285)]/30",
+            },
+            {
+              id: "#4825",
+              title: "API rate limit issue",
+              status: "Escalated",
+              cls: "bg-amber-500/12 text-amber-400 border-amber-500/25",
+            },
           ].map((r) => (
-            <div key={r.id} className="flex items-center justify-between rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2.5">
+            <div
+              key={r.id}
+              className="flex items-center justify-between rounded-xl border border-white/8 bg-white/[0.03] px-3 py-2.5"
+            >
               <div className="flex items-center gap-3 min-w-0">
-                <span className="font-mono text-[11px] text-white/40">{r.id}</span>
-                <span className="text-sm text-white/85 truncate">{r.t}</span>
+                <span className="font-mono text-[11px] text-white/35 flex-none">{r.id}</span>
+                <span className="text-sm text-white/80 truncate">{r.title}</span>
               </div>
-              <span className={`text-[11px] font-medium px-2 py-0.5 rounded-full border ${r.c}`}>{r.s}</span>
+              <span className={`text-[11px] font-medium px-2.5 py-0.5 rounded-full border flex-none ${r.cls}`}>
+                {r.status}
+              </span>
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
-function Stat({ label, value }: { label: string; value: string }) {
+function DashStat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-lg border border-white/10 bg-white/[0.03] p-3">
-      <div className="text-[11px] uppercase tracking-wider text-white/50">{label}</div>
-      <div className="mt-1 font-mono text-xl text-teal">{value}</div>
+    <div className="rounded-xl border border-white/8 bg-white/[0.03] p-3">
+      <div className="text-[10px] uppercase tracking-wider text-white/45">{label}</div>
+      <div className="mt-1 font-mono text-xl font-semibold text-[oklch(0.75_0.18_285)]">{value}</div>
     </div>
   );
 }
 
-/* ───── Section 1B: Live metrics ───── */
+/* ───── Metrics Bar ───── */
 function MetricsBar() {
   return (
-    <section className="bg-[oklch(0.18_0.025_260)] py-10 border-y border-white/5">
+    <section className="bg-[oklch(0.17_0.08_285)] py-10 border-y border-white/6">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-white/10">
-          <Metric value={<><StatCounter value={98} suffix="%" /></>} label="QA Score Target" />
-          <Metric value={<>&lt; <StatCounter value={4} /> min</>} label="Average First Response" />
-          <Metric value={<><StatCounter value={40} />–<StatCounter value={60} suffix="%" /></>} label="Cost Reduction vs. In-House" />
-          <Metric value={<span className="text-teal">EN + FR</span>} label="Bilingual Coverage" />
+        <div className="grid grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-white/8">
+          <MetricItem
+            icon={<BarChart3 className="h-5 w-5" />}
+            value={<><StatCounter value={98} suffix="%" /></>}
+            label="QA Score Target"
+          />
+          <MetricItem
+            icon={<Clock className="h-5 w-5" />}
+            value={<>&lt; <StatCounter value={4} /> min</>}
+            label="Average First Response"
+          />
+          <MetricItem
+            icon={<TrendingDown className="h-5 w-5" />}
+            value={<><StatCounter value={40} />–<StatCounter value={60} suffix="%" /></>}
+            label="Cost Reduction vs. In-House"
+          />
+          <MetricItem
+            icon={<Languages className="h-5 w-5" />}
+            value={<span className="text-[oklch(0.75_0.18_285)]">EN + FR</span>}
+            label="Bilingual Coverage"
+          />
         </div>
       </div>
     </section>
   );
 }
-function Metric({ value, label }: { value: React.ReactNode; label: string }) {
+
+function MetricItem({ icon, value, label }: { icon: React.ReactNode; value: React.ReactNode; label: string }) {
   return (
-    <div className="px-6 py-4 lg:py-2 text-center">
-      <div className="font-mono text-3xl lg:text-4xl text-teal font-medium">{value}</div>
-      <div className="mt-1 text-xs text-white/55">{label}</div>
+    <div className="px-6 py-4 lg:py-2 text-center text-white">
+      <div className="inline-flex items-center justify-center text-[oklch(0.72_0.20_285)] mb-2 opacity-75">
+        {icon}
+      </div>
+      <div className="font-mono text-3xl lg:text-4xl text-[oklch(0.75_0.18_285)] font-semibold">{value}</div>
+      <div className="mt-1 text-xs text-white/50">{label}</div>
     </div>
   );
 }
 
-/* ───── Section 2: Problem ───── */
+/* ───── Problem ───── */
 function Problem() {
   const items = [
-    { icon: "💸", title: "US/EU Support Is Expensive", text: "A single in-house support engineer in the US costs $3,500–$5,000/month in salary alone — before benefits, overhead, and turnover." },
-    { icon: "⏱️", title: "Hiring Takes Months", text: "Recruiting, interviewing, and onboarding takes 2–3 months. And if they leave, you start over." },
-    { icon: "📉", title: "Quality Gets Sacrificed", text: "Cheap offshore outsourcing pools give you shared, undertrained agents. Tickets pile up. Customers churn." },
+    {
+      icon: <TrendingDown className="h-6 w-6" />,
+      title: "US/EU Support Is Expensive",
+      text: "A single in-house engineer in the US costs $3,500–$5,000/month in salary alone — before benefits, overhead, and turnover risk.",
+    },
+    {
+      icon: <Clock className="h-6 w-6" />,
+      title: "Hiring Takes Months",
+      text: "Recruiting, interviewing, and onboarding takes 2–3 months. And if they leave, you start the whole process over.",
+    },
+    {
+      icon: <Zap className="h-6 w-6" />,
+      title: "Quality Gets Sacrificed",
+      text: "Cheap offshore pools give you shared, undertrained agents. Tickets pile up, response times slip, customers churn.",
+    },
   ];
+
   return (
     <section className="py-24 bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading eyebrow="Why companies come to us" title="Your support costs are eating your margins." />
+        <Reveal>
+          <SectionHeading
+            eyebrow="Why companies come to us"
+            title="Your support costs are eating your margins."
+          />
+        </Reveal>
         <div className="mt-14 grid md:grid-cols-3 gap-6">
           {items.map((it, i) => (
-            <Reveal key={it.title} delay={i * 80}>
-              <div className="h-full rounded-2xl border border-border bg-white p-7 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
-                <div className="text-3xl">{it.icon}</div>
-                <h3 className="mt-4 font-display text-xl font-semibold text-navy">{it.title}</h3>
+            <Reveal key={it.title} delay={i * 90}>
+              <div className="group h-full rounded-2xl border border-border bg-white p-7 hover:border-violet/30 hover:shadow-[0_8px_30px_oklch(0.55_0.25_285/0.08)] transition-all duration-300">
+                <div className="h-12 w-12 rounded-xl bg-violet-light inline-flex items-center justify-center text-violet">
+                  {it.icon}
+                </div>
+                <h3 className="mt-5 font-display text-xl font-semibold text-[oklch(0.13_0.07_285)]">{it.title}</h3>
                 <p className="mt-2 text-muted-foreground leading-relaxed">{it.text}</p>
               </div>
             </Reveal>
           ))}
         </div>
-        <Reveal delay={200}>
-          <div className="mt-12 mx-auto max-w-4xl rounded-xl border-l-4 border-teal bg-secondary/60 p-6">
-            <p className="font-display text-lg md:text-xl text-navy">
-              There's a better model: a <span className="text-teal font-semibold">dedicated, trained engineer</span> who works exclusively for your company — at a fraction of the cost.
+        <Reveal delay={250}>
+          <div className="mt-12 mx-auto max-w-4xl rounded-2xl border-l-4 border-violet bg-violet-light/50 p-6">
+            <p className="font-display text-lg md:text-xl text-[oklch(0.13_0.07_285)]">
+              There's a better model: a{" "}
+              <span className="text-violet font-semibold">dedicated, trained engineer</span> who works
+              exclusively for your company — at a fraction of the cost.
             </p>
           </div>
         </Reveal>
@@ -243,28 +362,36 @@ function Problem() {
   );
 }
 
-/* ───── Section 3: How model works (overview) ───── */
+/* ───── How It Works Overview ───── */
 function HowItWorksOverview() {
   const steps = [
-    { n: 1, t: "Discovery Call", d: "We learn your product, tools, and support volume." },
-    { n: 2, t: "We Match & Train", d: "We find and train the right engineer for your stack." },
-    { n: 3, t: "They Join Your Tools", d: "Your engineer integrates into Zendesk, Intercom, etc." },
-    { n: 4, t: "You Scale Confidently", d: "Weekly reports, KPIs, escalation handled." },
+    { n: 1, icon: <PhoneCall className="h-5 w-5" />, t: "Discovery Call", d: "We learn your product, tools, and support volume in depth." },
+    { n: 2, icon: <Users className="h-5 w-5" />, t: "We Match & Train", d: "We find and train the right engineer for your stack and culture." },
+    { n: 3, icon: <ClipboardList className="h-5 w-5" />, t: "They Join Your Tools", d: "Your engineer integrates into Zendesk, Intercom, Freshdesk, etc." },
+    { n: 4, icon: <LineChart className="h-5 w-5" />, t: "You Scale Confidently", d: "Weekly reports, KPIs tracked, escalations handled seamlessly." },
   ];
+
   return (
-    <section className="py-24 bg-surface">
+    <section className="py-24 bg-surface bg-grid-lines">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading title="A Simpler Way to Scale Support" />
+        <Reveal>
+          <SectionHeading title="A Simpler Way to Scale Support" />
+        </Reveal>
         <div className="mt-14 relative">
-          <div className="hidden md:block absolute top-7 left-[12.5%] right-[12.5%] h-px bg-border" aria-hidden="true" />
+          <div
+            className="hidden md:block absolute top-7 left-[12.5%] right-[12.5%] h-px"
+            aria-hidden="true"
+            style={{ background: "linear-gradient(to right, transparent, oklch(0.55 0.25 285 / 0.3), transparent)" }}
+          />
           <ol className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {steps.map((s, i) => (
-              <Reveal key={s.n} delay={i * 80}>
+              <Reveal key={s.n} delay={i * 90}>
                 <li className="relative text-center">
-                  <div className="mx-auto h-14 w-14 rounded-full bg-white border-2 border-teal text-teal font-mono text-lg font-semibold inline-flex items-center justify-center shadow-sm relative z-10">
-                    {s.n}
+                  <div className="mx-auto h-14 w-14 rounded-2xl bg-white border-2 border-violet/30 text-violet inline-flex items-center justify-center shadow-[0_4px_16px_oklch(0.55_0.25_285/0.15)] relative z-10">
+                    {s.icon}
                   </div>
-                  <h3 className="mt-4 font-display font-semibold text-navy">{s.t}</h3>
+                  <div className="mt-1 font-mono text-[11px] text-violet/60">{String(s.n).padStart(2, "0")}</div>
+                  <h3 className="mt-2 font-display font-semibold text-[oklch(0.13_0.07_285)]">{s.t}</h3>
                   <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.d}</p>
                 </li>
               </Reveal>
@@ -272,8 +399,12 @@ function HowItWorksOverview() {
           </ol>
         </div>
         <div className="mt-10 text-center">
-          <Link to="/how-it-works" className="group inline-flex items-center gap-1 text-teal font-medium hover:underline">
-            See the full process <span className="cta-arrow">→</span>
+          <Link
+            to="/how-it-works"
+            className="group inline-flex items-center gap-1.5 text-violet font-semibold hover:underline text-sm"
+          >
+            See the full process
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
           </Link>
         </div>
       </div>
@@ -281,27 +412,48 @@ function HowItWorksOverview() {
   );
 }
 
-/* ───── Section 4: Value cards ───── */
+/* ───── Value Cards ───── */
 function ValueCards() {
   const cards = [
-    { icon: "👤", title: "Dedicated Engineer", text: "Your engineer works exclusively for you — not a shared pool. They learn your product, tone, and workflows deeply." },
-    { icon: "📊", title: "40–60% Cost Reduction", text: "Compare $4,000+/month for a US hire vs. $900/month with us. Same quality. Different geography." },
-    { icon: "🌐", title: "Bilingual: English & French", text: "Our engineers support both English and French-speaking customers — a rare advantage that most providers cannot match." },
-    { icon: "🛡️", title: "Founder-Led Quality Control", text: "Every engineer is supervised by our operations lead. Weekly reporting, SLA tracking, and escalation management included." },
+    {
+      icon: <Users className="h-6 w-6" />,
+      title: "Dedicated Engineer",
+      text: "Your engineer works exclusively for you — not a shared pool. They learn your product, tone, and workflows deeply.",
+    },
+    {
+      icon: <BarChart3 className="h-6 w-6" />,
+      title: "40–60% Cost Reduction",
+      text: "Compare $4,000+/month for a US hire vs. $900/month with us. Same quality. Different geography.",
+    },
+    {
+      icon: <Globe2 className="h-6 w-6" />,
+      title: "Bilingual: EN & FR",
+      text: "Our engineers support both English and French-speaking customers — a rare advantage that most providers cannot match.",
+    },
+    {
+      icon: <ShieldCheck className="h-6 w-6" />,
+      title: "Founder-Led Quality",
+      text: "Every engineer is supervised by our operations lead. Weekly reporting, SLA tracking, and escalation management included.",
+    },
   ];
+
   return (
     <section className="py-24 bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          title="Everything Included, Nothing Hidden"
-          subtitle="When you work with Zenorva Support, you're not just getting an agent. You're getting a managed support operation — without the overhead."
-        />
+        <Reveal>
+          <SectionHeading
+            title="Everything Included, Nothing Hidden"
+            subtitle="When you work with Zenorva Support, you're not just getting an agent. You're getting a managed support operation — without the overhead."
+          />
+        </Reveal>
         <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {cards.map((c, i) => (
-            <Reveal key={c.title} delay={i * 60}>
-              <div className="h-full rounded-2xl border border-border bg-white p-6 hover:border-teal/40 hover:shadow-md transition-all">
-                <div className="h-11 w-11 rounded-xl bg-teal/10 inline-flex items-center justify-center text-2xl">{c.icon}</div>
-                <h3 className="mt-4 font-display font-semibold text-navy text-lg">{c.title}</h3>
+            <Reveal key={c.title} delay={i * 70}>
+              <div className="group h-full rounded-2xl border border-border bg-white p-6 hover:border-violet/30 hover:shadow-[0_8px_30px_oklch(0.55_0.25_285/0.1)] hover:-translate-y-1 transition-all duration-300">
+                <div className="h-12 w-12 rounded-xl bg-violet-light inline-flex items-center justify-center text-violet">
+                  {c.icon}
+                </div>
+                <h3 className="mt-5 font-display font-semibold text-[oklch(0.13_0.07_285)] text-lg">{c.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{c.text}</p>
               </div>
             </Reveal>
@@ -312,27 +464,35 @@ function ValueCards() {
   );
 }
 
-/* ───── Section 4B: Behind your engineer ───── */
+/* ───── Behind Your Engineer ───── */
 function BehindEngineer() {
   return (
     <section className="py-24 bg-surface">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          title="You Get More Than One Person"
-          subtitle="Every Zenorva Support engagement is backed by a structured support layer — so your engineer always has what they need to perform."
-        />
+        <Reveal>
+          <SectionHeading
+            title="You Get More Than One Person"
+            subtitle="Every Zenorva Support engagement is backed by a structured support layer — so your engineer always has what they need to perform."
+          />
+        </Reveal>
 
         <div className="mt-14 mx-auto max-w-3xl">
           <Reveal>
             <div className="flex flex-col items-center gap-6">
               <OrgBox label="Your Company" tone="muted" />
               <Connector />
-              <OrgBox label="Your Dedicated Engineer" tone="teal" />
-              <div className="w-full grid grid-cols-3 gap-4 relative">
-                <div className="absolute left-[16.66%] right-[16.66%] -top-3 h-px bg-border" aria-hidden="true" />
-                <OrgBox label="Founder / Ops Lead" small />
-                <OrgBox label="Training & Onboarding" small />
-                <OrgBox label="Weekly QA & Reporting" small />
+              <OrgBox label="Your Dedicated Engineer" tone="violet" />
+              <div className="w-full relative">
+                <div
+                  className="absolute left-[16.66%] right-[16.66%] -top-3 h-px"
+                  aria-hidden="true"
+                  style={{ background: "linear-gradient(to right, transparent, oklch(0.55 0.25 285 / 0.3), transparent)" }}
+                />
+                <div className="grid grid-cols-3 gap-4">
+                  <OrgBox label="Founder / Ops Lead" small />
+                  <OrgBox label="Training & Onboarding" small />
+                  <OrgBox label="Weekly QA & Reporting" small />
+                </div>
               </div>
             </div>
           </Reveal>
@@ -340,16 +500,18 @@ function BehindEngineer() {
 
         <div className="mt-14 grid md:grid-cols-3 gap-4">
           {[
-            { i: "🧑‍💼", t: "Direct founder access", d: "No account manager layers. You speak to Kwale directly." },
-            { i: "📋", t: "Structured onboarding", d: "Every engineer trains on your product before day one." },
-            { i: "📊", t: "Weekly performance reports", d: "Tickets, CSAT, response time, escalations — every Monday." },
+            { icon: <BadgeCheck className="h-5 w-5 text-violet" />, t: "Direct founder access", d: "No account manager layers. You speak to the founder directly." },
+            { icon: <ClipboardList className="h-5 w-5 text-violet" />, t: "Structured onboarding", d: "Every engineer trains on your product before day one." },
+            { icon: <LineChart className="h-5 w-5 text-violet" />, t: "Weekly performance reports", d: "Tickets, CSAT, response time, escalations — every Monday." },
           ].map((p, i) => (
             <Reveal key={p.t} delay={i * 80}>
-              <div className="rounded-full bg-white border border-border px-5 py-4 flex items-center gap-3 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
-                <span className="text-xl">{p.i}</span>
+              <div className="rounded-2xl bg-white border border-border px-5 py-4 flex items-center gap-4 shadow-[0_1px_4px_rgba(0,0,0,0.04)] hover:border-violet/25 transition-colors">
+                <div className="h-10 w-10 rounded-xl bg-violet-light flex items-center justify-center flex-none">
+                  {p.icon}
+                </div>
                 <div>
-                  <div className="font-display font-semibold text-navy text-sm">{p.t}</div>
-                  <div className="text-xs text-muted-foreground">{p.d}</div>
+                  <div className="font-display font-semibold text-[oklch(0.13_0.07_285)] text-sm">{p.t}</div>
+                  <div className="text-xs text-muted-foreground mt-0.5">{p.d}</div>
                 </div>
               </div>
             </Reveal>
@@ -359,59 +521,78 @@ function BehindEngineer() {
     </section>
   );
 }
-function OrgBox({ label, tone = "default", small = false }: { label: string; tone?: "default" | "teal" | "muted"; small?: boolean }) {
+
+function OrgBox({ label, tone = "default", small = false }: { label: string; tone?: "default" | "violet" | "muted"; small?: boolean }) {
   const cls =
-    tone === "teal"
-      ? "bg-navy text-white border-teal"
+    tone === "violet"
+      ? "bg-[oklch(0.13_0.07_285)] text-white border-violet/40"
       : tone === "muted"
-      ? "bg-white text-navy border-border"
-      : "bg-white text-navy border-border";
+      ? "bg-white text-[oklch(0.13_0.07_285)] border-border"
+      : "bg-white text-[oklch(0.13_0.07_285)] border-border";
   return (
-    <div className={`${small ? "text-xs px-3 py-2" : "text-sm px-5 py-3"} rounded-xl border ${cls} font-display font-medium text-center w-full`}>
+    <div
+      className={`${small ? "text-xs px-3 py-2.5" : "text-sm px-6 py-3.5"} rounded-xl border ${cls} font-display font-semibold text-center w-full shadow-[0_1px_4px_rgba(0,0,0,0.05)]`}
+    >
       {label}
     </div>
   );
 }
+
 function Connector() {
-  return <div className="h-6 w-px bg-border" aria-hidden="true" />;
+  return (
+    <div className="h-8 w-px bg-gradient-to-b from-border to-violet/30" aria-hidden="true" />
+  );
 }
 
-/* ───── Section 5: Cost comparison ───── */
+/* ───── Cost Comparison ───── */
 function CostComparison() {
   return (
-    <section className="py-24 bg-navy text-white relative overflow-hidden">
-      <div className="absolute inset-0 bg-grid-dots opacity-50" aria-hidden="true" />
+    <section className="py-24 bg-[oklch(0.13_0.07_285)] text-white relative overflow-hidden">
+      <div className="absolute inset-0 bg-grid-dots" aria-hidden="true" />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        aria-hidden="true"
+        style={{
+          background: "radial-gradient(50% 60% at 80% 20%, oklch(0.55 0.25 285 / 0.15), transparent 60%)",
+        }}
+      />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading inverted title="The Math Is Simple" />
+        <Reveal>
+          <SectionHeading inverted title="The Math Is Simple" />
+        </Reveal>
         <div className="mt-14 grid md:grid-cols-2 gap-6">
-          <CompareCard
-            title="In-House US Engineer"
-            tone="warn"
-            rows={[
-              ["Salary", "$3,500–$5,000 / month"],
-              ["Benefits & overhead", "+$800–$1,200"],
-              ["Recruiting cost", "$5,000–$10,000 (one-time)"],
-              ["Training time", "4–8 weeks"],
-              ["Risk", "High turnover"],
-            ]}
-            total="~$4,500–$6,200 / month"
-          />
-          <CompareCard
-            title="Our Dedicated Engineer"
-            tone="teal"
-            badge="RECOMMENDED"
-            rows={[
-              ["Monthly fee", "$800–$1,000 / month"],
-              ["Benefits/overhead", "$0 (included)"],
-              ["Recruiting cost", "$0 (we handle it)"],
-              ["Training", "Handled by us"],
-              ["Risk", "Pilot program with easy exit"],
-            ]}
-            total="~$800–$1,000 / month"
-          />
+          <Reveal delay={80}>
+            <CompareCard
+              title="In-House US Engineer"
+              tone="warn"
+              rows={[
+                ["Salary", "$3,500–$5,000 / month"],
+                ["Benefits & overhead", "+$800–$1,200"],
+                ["Recruiting cost", "$5,000–$10,000 (one-time)"],
+                ["Training time", "4–8 weeks"],
+                ["Risk", "High turnover"],
+              ]}
+              total="~$4,500–$6,200 / month"
+            />
+          </Reveal>
+          <Reveal delay={160}>
+            <CompareCard
+              title="Our Dedicated Engineer"
+              tone="violet"
+              badge="RECOMMENDED"
+              rows={[
+                ["Monthly fee", "$800–$1,000 / month"],
+                ["Benefits & overhead", "$0 (included)"],
+                ["Recruiting cost", "$0 (we handle it)"],
+                ["Training", "Handled by us"],
+                ["Risk", "Pilot program — easy exit"],
+              ]}
+              total="~$800–$1,000 / month"
+            />
+          </Reveal>
         </div>
-        <Reveal delay={200}>
-          <p className="mt-12 text-center font-mono text-2xl md:text-3xl text-teal">
+        <Reveal delay={250} variant="fade">
+          <p className="mt-12 text-center font-mono text-2xl md:text-3xl text-[oklch(0.75_0.18_285)]">
             Save up to <StatCounter value={60000} prefix="$" />+ per year per engineer.
           </p>
         </Reveal>
@@ -419,79 +600,97 @@ function CostComparison() {
     </section>
   );
 }
+
 function CompareCard({
   title, rows, total, tone, badge,
-}: { title: string; rows: [string, string][]; total: string; tone: "teal" | "warn"; badge?: string }) {
-  const border = tone === "teal" ? "border-teal" : "border-warning/40";
-  const totalColor = tone === "teal" ? "text-teal" : "text-white/80";
+}: { title: string; rows: [string, string][]; total: string; tone: "violet" | "warn"; badge?: string }) {
+  const border = tone === "violet" ? "border-[oklch(0.55_0.25_285)]" : "border-amber-500/30";
+  const totalColor = tone === "violet" ? "text-[oklch(0.75_0.18_285)]" : "text-white/75";
   return (
-    <div className={`relative rounded-2xl bg-white/[0.04] border ${border} p-7`}>
+    <div className={`relative rounded-2xl bg-white/[0.04] border ${border} p-7 h-full`}>
       {badge && (
-        <span className="absolute -top-3 left-7 inline-flex items-center rounded-full bg-teal px-3 py-1 text-[10px] font-bold tracking-wider text-teal-foreground">
+        <span className="absolute -top-3.5 left-7 inline-flex items-center rounded-full bg-violet px-3.5 py-1 text-[10px] font-bold tracking-wider text-white">
           {badge}
         </span>
       )}
       <h3 className="font-display text-xl font-semibold text-white">{title}</h3>
-      <ul className="mt-5 space-y-2.5">
+      <ul className="mt-5 space-y-3">
         {rows.map(([k, v]) => (
           <li key={k} className="flex items-baseline justify-between gap-4 text-sm">
-            <span className="text-white/60">{k}</span>
-            <span className="text-white text-right">{v}</span>
+            <span className="text-white/55">{k}</span>
+            <span className="text-white text-right font-medium">{v}</span>
           </li>
         ))}
       </ul>
       <div className="mt-6 pt-5 border-t border-white/10 flex items-baseline justify-between">
-        <span className="text-xs uppercase tracking-wider text-white/50">Total</span>
+        <span className="text-xs uppercase tracking-wider text-white/45">Total</span>
         <span className={`font-mono text-lg font-semibold ${totalColor}`}>{total}</span>
       </div>
     </div>
   );
 }
 
-/* ───── Section 6: Pilot ───── */
+/* ───── Pilot Callout ───── */
 function PilotCallout() {
   const { open } = useBookCall();
   return (
-    <section className="py-24" style={{ background: "linear-gradient(135deg, oklch(0.78 0.14 175), oklch(0.72 0.13 180))" }}>
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center text-navy">
-        <h2 className="font-display text-3xl md:text-4xl font-bold">Not Ready to Commit? Start With a 30-Day Pilot.</h2>
-        <p className="mt-4 text-lg text-navy/80 max-w-2xl mx-auto">
-          Test one dedicated engineer for 30 days. Defined KPIs. Weekly reporting. Cancel anytime.
-          Most clients scale to 2–5 engineers within 90 days.
-        </p>
-        <div className="mt-8">
-          <CTAButton size="lg" variant="white" onClick={open}>Start Your 30-Day Pilot</CTAButton>
-        </div>
-        <p className="mt-4 text-sm text-navy/70">No setup fees. No long-term contract required for the pilot.</p>
+    <section
+      className="py-24 relative overflow-hidden"
+      style={{ background: "linear-gradient(135deg, oklch(0.55 0.25 285), oklch(0.45 0.28 295))" }}
+    >
+      {/* Subtle pattern */}
+      <div className="absolute inset-0 bg-grid-dots opacity-20" aria-hidden="true" />
+      <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center text-white">
+        <Reveal>
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-semibold backdrop-blur-sm mb-6">
+            <Star className="h-3.5 w-3.5" aria-hidden="true" />
+            Low-Risk Entry Point
+          </span>
+          <h2 className="font-display text-3xl md:text-4xl font-bold">
+            Not Ready to Commit?<br />Start With a 30-Day Pilot.
+          </h2>
+          <p className="mt-5 text-lg text-white/80 max-w-2xl mx-auto leading-relaxed">
+            Test one dedicated engineer for 30 days. Defined KPIs. Weekly reporting. Cancel anytime.
+            Most clients scale to 2–5 engineers within 90 days.
+          </p>
+          <div className="mt-8">
+            <CTAButton size="lg" variant="white" onClick={open}>
+              Start Your 30-Day Pilot
+            </CTAButton>
+          </div>
+          <p className="mt-4 text-sm text-white/65">No setup fees. No long-term contract for the pilot.</p>
+        </Reveal>
       </div>
     </section>
   );
 }
 
-/* ───── Section 6B: Partner ───── */
+/* ───── Partner Section ───── */
 function PartnerSection() {
   return (
     <section className="py-24 bg-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-14 items-center">
         <Reveal>
           <div>
-            <div className="text-xs font-semibold tracking-[0.18em] uppercase text-teal">Not a vendor. A partner.</div>
-            <h3 className="mt-3 font-display text-3xl md:text-4xl font-bold text-navy">We Don't Disappear After Onboarding.</h3>
+            <div className="text-xs font-semibold tracking-[0.2em] uppercase text-violet mb-3">
+              Not a vendor. A partner.
+            </div>
+            <h3 className="font-display text-3xl md:text-4xl font-bold text-[oklch(0.13_0.07_285)]">
+              We Don't Disappear After Onboarding.
+            </h3>
             <p className="mt-5 text-muted-foreground leading-relaxed">
-              Most outsourcing companies hand you an agent and move on. At Zenorva Support, Kwale stays involved —
-              reviewing performance, adjusting workflows, and proactively flagging issues before they become problems.
-              Our goal is to become an extension of your team, not a line item on your invoice.
+              Most outsourcing companies hand you an agent and move on. At Zenorva Support, our founder stays
+              involved — reviewing performance, adjusting workflows, and proactively flagging issues before they
+              become problems. Our goal is to become an extension of your team, not a line item on your invoice.
             </p>
-            <ul className="mt-6 space-y-3">
+            <ul className="mt-6 space-y-3.5">
               {[
                 "Proactive reporting — we surface issues before you notice them",
                 "Regular strategy alignment — we adapt as your product evolves",
                 "Transparent communication — no surprises, ever",
               ].map((t) => (
                 <li key={t} className="flex items-start gap-3">
-                  <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-teal/15 text-teal flex-none">
-                    <Check />
-                  </span>
+                  <CheckCircle2 className="h-5 w-5 text-violet flex-none mt-0.5" aria-hidden="true" />
                   <span className="text-foreground">{t}</span>
                 </li>
               ))}
@@ -499,12 +698,21 @@ function PartnerSection() {
           </div>
         </Reveal>
         <Reveal delay={120}>
-          <blockquote className="rounded-2xl bg-navy text-white p-8 border-l-4 border-teal relative">
-            <span aria-hidden className="absolute -top-2 left-6 font-display text-6xl text-teal leading-none">“</span>
-            <p className="font-display text-xl md:text-2xl leading-snug">
-              The best outsourcing partnerships stop feeling like outsourcing. The team becomes yours — aligned to your brand, your customers, and your growth.
+          <blockquote
+            className="rounded-2xl p-8 border-l-4 border-violet relative overflow-hidden"
+            style={{ background: "linear-gradient(135deg, oklch(0.13 0.07 285), oklch(0.18 0.09 285))" }}
+          >
+            <div
+              className="absolute top-0 right-0 w-40 h-40 rounded-full opacity-10 blur-2xl"
+              aria-hidden="true"
+              style={{ background: "oklch(0.55 0.25 285)" }}
+            />
+            <span className="relative font-display text-7xl text-violet leading-none block -mb-4">"</span>
+            <p className="relative font-display text-xl md:text-2xl leading-snug text-white">
+              The best outsourcing partnerships stop feeling like outsourcing. The team becomes yours — aligned
+              to your brand, your customers, and your growth.
             </p>
-            <footer className="mt-6 text-sm text-white/60">— Zenorva Support founding philosophy</footer>
+            <footer className="relative mt-6 text-sm text-white/55">— Zenorva Support founding philosophy</footer>
           </blockquote>
         </Reveal>
       </div>
@@ -512,25 +720,51 @@ function PartnerSection() {
   );
 }
 
-/* ───── Section 7: Testimonials ───── */
+/* ───── Testimonials ───── */
 function Testimonials() {
   const items = [
-    { q: "Our first-contact resolution rate jumped 22% within 6 weeks. The engineer felt like part of our team from day one.", a: "Sarah M.", r: "Head of Customer Success, B2B SaaS Platform" },
-    { q: "We were spending $4,200/month on a part-time contractor. We switched and now have a full-time dedicated engineer at $950/month. The quality is genuinely better.", a: "Thomas B.", r: "CTO, Managed Service Provider, Germany" },
-    { q: "The onboarding process was thorough — they understood our Zendesk setup within the first week. Highly professional.", a: "Amara D.", r: "Operations Lead, E-Commerce Company, UK" },
+    {
+      q: "Our first-contact resolution rate jumped 22% within 6 weeks. The engineer felt like part of our team from day one.",
+      a: "Sarah M.",
+      r: "Head of Customer Success, B2B SaaS Platform",
+    },
+    {
+      q: "We were spending $4,200/month on a part-time contractor. We switched and now have a full-time dedicated engineer at $950/month. The quality is genuinely better.",
+      a: "Thomas B.",
+      r: "CTO, Managed Service Provider, Germany",
+    },
+    {
+      q: "The onboarding process was thorough — they understood our Zendesk setup within the first week. Highly professional.",
+      a: "Amara D.",
+      r: "Operations Lead, E-Commerce Company, UK",
+    },
   ];
+
   return (
     <section className="py-24 bg-surface">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading title="What Our Clients Say" />
+        <Reveal>
+          <SectionHeading eyebrow="Client outcomes" title="What Our Clients Say" />
+        </Reveal>
         <div className="mt-14 grid md:grid-cols-3 gap-6">
           {items.map((t, i) => (
             <Reveal key={t.a} delay={i * 80}>
-              <figure className="h-full rounded-2xl bg-white p-7 border border-border border-l-2 border-l-teal shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
-                <blockquote className="italic text-foreground leading-relaxed">"{t.q}"</blockquote>
-                <figcaption className="mt-5">
-                  <div className="font-display font-semibold text-navy">{t.a}</div>
-                  <div className="text-sm text-muted-foreground">{t.r}</div>
+              <figure className="h-full rounded-2xl bg-white p-7 border border-border hover:border-violet/25 hover:shadow-[0_8px_30px_oklch(0.55_0.25_285/0.07)] transition-all duration-300">
+                {/* Stars */}
+                <div className="flex gap-1 mb-4">
+                  {Array.from({ length: 5 }).map((_, s) => (
+                    <Star key={s} className="h-4 w-4 fill-violet text-violet" aria-hidden="true" />
+                  ))}
+                </div>
+                <blockquote className="text-foreground leading-relaxed text-sm">"{t.q}"</blockquote>
+                <figcaption className="mt-5 flex items-center gap-3">
+                  <div className="h-9 w-9 rounded-full bg-violet-light flex items-center justify-center text-violet font-bold text-sm flex-none">
+                    {t.a.charAt(0)}
+                  </div>
+                  <div>
+                    <div className="font-display font-semibold text-[oklch(0.13_0.07_285)] text-sm">{t.a}</div>
+                    <div className="text-xs text-muted-foreground">{t.r}</div>
+                  </div>
                 </figcaption>
               </figure>
             </Reveal>
@@ -541,23 +775,41 @@ function Testimonials() {
   );
 }
 
-/* ───── Section 8: Final CTA ───── */
+/* ───── Final CTA ───── */
 function FinalCTA() {
   const { open } = useBookCall();
   return (
-    <section className="py-24 bg-navy text-white relative overflow-hidden">
-      <div className="absolute inset-0 bg-grid-dots opacity-50" aria-hidden="true" />
+    <section className="py-24 bg-[oklch(0.13_0.07_285)] text-white relative overflow-hidden">
+      <div className="absolute inset-0 bg-grid-dots" aria-hidden="true" />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        aria-hidden="true"
+        style={{
+          background: "radial-gradient(60% 55% at 50% 100%, oklch(0.55 0.25 285 / 0.2), transparent 55%)",
+        }}
+      />
       <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="font-display text-3xl md:text-5xl font-bold leading-tight">
-          Ready to Build a Leaner, Better Support Team?
-        </h2>
-        <p className="mt-5 text-lg text-white/70 max-w-2xl mx-auto">
-          Book a free 30-minute discovery call. We'll assess your support needs and propose a tailored solution — no pressure, no commitment.
-        </p>
-        <div className="mt-8">
-          <CTAButton size="lg" onClick={open}>Book Your Free Consultation</CTAButton>
-        </div>
-        <p className="mt-4 text-sm text-white/50">Typically responds within 1 business day</p>
+        <Reveal>
+          <h2 className="font-display text-3xl md:text-5xl font-bold leading-tight">
+            Ready to Build a Leaner,{" "}
+            <span className="text-gradient">Better Support Team?</span>
+          </h2>
+          <p className="mt-5 text-lg text-white/65 max-w-2xl mx-auto leading-relaxed">
+            Book a free 30-minute discovery call. We'll assess your support needs and propose a tailored
+            solution — no pressure, no commitment.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3 justify-center">
+            <CTAButton size="lg" onClick={open}>
+              Book Your Free Consultation
+            </CTAButton>
+            <Link to="/pricing">
+              <CTAButton size="lg" variant="ghost-light" withArrow={false} className="!border-white/30 !text-white hover:!bg-white/10">
+                View Pricing
+              </CTAButton>
+            </Link>
+          </div>
+          <p className="mt-5 text-sm text-white/45">Typically responds within 1 business day</p>
+        </Reveal>
       </div>
     </section>
   );

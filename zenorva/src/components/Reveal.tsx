@@ -1,23 +1,42 @@
-import { useInView } from "@/hooks/use-in-view";
-import type { ReactNode, HTMLAttributes } from "react";
+import { useRef, type ReactNode } from "react";
+import { motion, useInView } from "framer-motion";
 
-interface RevealProps extends HTMLAttributes<HTMLDivElement> {
+interface RevealProps {
   children: ReactNode;
   delay?: number;
-  as?: "div" | "section" | "article" | "header";
+  className?: string;
+  variant?: "up" | "fade" | "scale";
 }
 
-export function Reveal({ children, delay = 0, className = "", as = "div", ...rest }: RevealProps) {
-  const { ref, inView } = useInView<HTMLDivElement>();
-  const Tag = as as any;
+const motionVariants = {
+  up: {
+    hidden: { opacity: 0, y: 24 },
+    visible: { opacity: 1, y: 0 },
+  },
+  fade: {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+  },
+  scale: {
+    hidden: { opacity: 0, scale: 0.94 },
+    visible: { opacity: 1, scale: 1 },
+  },
+};
+
+export function Reveal({ children, delay = 0, className = "", variant = "up" }: RevealProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" as any });
+
   return (
-    <Tag
+    <motion.div
       ref={ref}
-      className={`reveal ${inView ? "is-visible" : ""} ${className}`}
-      style={{ transitionDelay: `${delay}ms` }}
-      {...rest}
+      className={className}
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
+      variants={motionVariants[variant]}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: delay / 1000 }}
     >
       {children}
-    </Tag>
+    </motion.div>
   );
 }
