@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { BookCallProvider } from "@/components/BookCallModal";
-import { MobileStickyCTA } from "@/components/MobileStickyCTA";
 import { ScrollBanner } from "@/components/ScrollBanner";
 
 function NotFoundComponent() {
@@ -87,10 +86,7 @@ function RootComponent() {
         </main>
         <Footer />
       </div>
-      <MobileStickyCTA />
       <ScrollBanner />
-      {/* spacer so mobile sticky bar doesn't hide content */}
-      <div className="lg:hidden h-20" aria-hidden="true" />
     </BookCallProvider>
   );
 }
