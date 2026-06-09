@@ -48,15 +48,13 @@ function HomePage() {
     <>
       <Hero />
       <AboutUs />
-      <OurStats />
-      <Problem />
       <HowItWorksOverview />
+      <ProblemAndStats />
       <BehindEngineer />
       <TrustedBy />
       <ValueCards />
       <CostComparison />
       <PilotCallout />
-      <PartnerSection />
       <Testimonials />
       <FinalCTA />
     </>
@@ -274,176 +272,34 @@ function DashStat({ label, value }: { label: string; value: string }) {
 /* ───── About Us ───── */
 function AboutUs() {
   return (
-    <section className="py-24 bg-white overflow-hidden">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-
-          {/* Left — story */}
-          <Reveal>
-            <div>
-              <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-violet mb-4">
-                Who we are
-              </span>
-              <h2 className="font-display text-3xl md:text-4xl lg:text-[44px] font-bold leading-[1.1] text-[oklch(0.13_0.07_285)]">
-                We connect world-class African talent with companies that need{" "}
-                <span className="text-gradient">reliable support.</span>
-              </h2>
-              <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-                Zenorva Support was founded in Cameroon with a simple belief: exceptional talent
-                shouldn't be limited by geography. We recruit, train, and manage dedicated
-                support engineers — then embed them directly into your team.
-              </p>
-              <p className="mt-4 text-muted-foreground leading-relaxed">
-                Every client works with a named engineer who understands their product deeply.
-                No ticket pools. No rotating agents. Just consistent, professional support — backed
-                by founder-level oversight and weekly accountability.
-              </p>
-
-              {/* Founder callout */}
-              <div className="mt-8 flex items-start gap-4 p-5 rounded-2xl bg-violet-light border border-violet/15">
-                <div className="h-11 w-11 rounded-full bg-[oklch(0.13_0.07_285)] text-white font-bold font-display inline-flex items-center justify-center flex-none text-base">
-                  KC
-                </div>
-                <div>
-                  <p className="text-sm text-[oklch(0.13_0.07_285)] leading-relaxed">
-                    <span className="font-semibold">Kwale Cedric, Founder —</span>{" "}
-                    "I started Zenorva Support because I saw firsthand how much talent exists here in
-                    Cameroon, and how little of the global opportunity reaches us. We're changing that —
-                    one dedicated engineer at a time."
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-
-          {/* Right — visual pillars */}
-          <Reveal delay={120}>
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                {
-                  icon: <Globe2 className="h-6 w-6" />,
-                  title: "Based in Cameroon",
-                  text: "UTC+1 — perfectly aligned with European working hours. Bilingual EN/FR as standard.",
-                },
-                {
-                  icon: <ShieldCheck className="h-6 w-6" />,
-                  title: "Founder-Led",
-                  text: "No layers between you and leadership. Direct oversight on every engagement.",
-                },
-                {
-                  icon: <Users className="h-6 w-6" />,
-                  title: "Dedicated, Not Shared",
-                  text: "Your engineer works exclusively for you — learning your product, your voice, your customers.",
-                },
-                {
-                  icon: <BadgeCheck className="h-6 w-6" />,
-                  title: "Quality Guaranteed",
-                  text: "Structured onboarding, weekly QA checks, and transparent performance reporting every Monday.",
-                },
-              ].map((p, i) => (
-                <Reveal key={p.title} delay={i * 60 + 140}>
-                  <div className="h-full rounded-2xl border border-border bg-white p-5 hover:border-violet/30 hover:shadow-[0_6px_24px_oklch(0.55_0.25_285/0.08)] transition-all duration-300">
-                    <div className="h-11 w-11 rounded-xl bg-violet-light inline-flex items-center justify-center text-violet mb-4">
-                      {p.icon}
-                    </div>
-                    <h3 className="font-display font-semibold text-[oklch(0.13_0.07_285)] text-sm">{p.title}</h3>
-                    <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">{p.text}</p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ───── Our Stats ───── */
-function OurStats() {
-  return (
-    <section className="py-20 bg-[oklch(0.13_0.07_285)] relative overflow-hidden">
-      <div className="absolute inset-0 bg-grid-dots" aria-hidden="true" />
-      <div
-        className="absolute inset-0 pointer-events-none"
-        aria-hidden="true"
-        style={{
-          background: "radial-gradient(55% 70% at 50% 110%, oklch(0.55 0.25 285 / 0.25), transparent 60%)",
-        }}
-      />
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="py-16 bg-white">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
         <Reveal>
-          <p className="text-center text-xs font-semibold tracking-[0.2em] uppercase text-white/40 mb-12">
-            Our Stats
+          <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-violet mb-4">
+            Who we are
+          </span>
+          <h2 className="font-display text-3xl md:text-4xl font-bold leading-[1.1] text-[oklch(0.13_0.07_285)]">
+            We connect world-class African talent with companies that need{" "}
+            <span className="text-gradient">reliable support.</span>
+          </h2>
+          <p className="mt-5 text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+            Zenorva Support was founded in Cameroon with a simple belief: exceptional talent
+            shouldn't be limited by geography. We recruit, train, and manage dedicated
+            support engineers — then embed them directly into your team.
+          </p>
+          <p className="mt-4 text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+            Every client works with a named engineer who understands their product deeply.
+            No ticket pools. No rotating agents. Just consistent, professional support — backed
+            by founder-level oversight and weekly accountability.
           </p>
         </Reveal>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/8 rounded-2xl overflow-hidden">
-          {[
-            { icon: <BarChart3 className="h-5 w-5" />, value: <><StatCounter value={98} suffix="%" /></>, label: "QA Score Target" },
-            { icon: <Clock className="h-5 w-5" />, value: <>&lt;&nbsp;<StatCounter value={4} />&nbsp;min</>, label: "Avg. First Response" },
-            { icon: <TrendingDown className="h-5 w-5" />, value: <><StatCounter value={40} />–<StatCounter value={60} suffix="%" /></>, label: "Cost Reduction vs. In-House" },
-            { icon: <Languages className="h-5 w-5" />, value: <span className="text-[oklch(0.75_0.18_285)]">EN + FR</span>, label: "Bilingual Coverage" },
-          ].map((m, i) => (
-            <Reveal key={m.label} delay={i * 70}>
-              <div className="bg-[oklch(0.17_0.08_285)] px-6 py-10 text-center text-white flex flex-col items-center gap-3">
-                <div className="text-[oklch(0.72_0.20_285)] opacity-70">{m.icon}</div>
-                <div className="font-mono text-4xl md:text-5xl font-semibold text-[oklch(0.75_0.18_285)]">{m.value}</div>
-                <div className="text-xs text-white/45 leading-snug max-w-[120px]">{m.label}</div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
       </div>
     </section>
   );
 }
 
-/* ───── Metrics Bar ───── */
-function MetricsBar() {
-  return (
-    <section className="bg-[oklch(0.17_0.08_285)] py-10 border-y border-white/6">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-white/8">
-          <MetricItem
-            icon={<BarChart3 className="h-5 w-5" />}
-            value={<><StatCounter value={98} suffix="%" /></>}
-            label="QA Score Target"
-          />
-          <MetricItem
-            icon={<Clock className="h-5 w-5" />}
-            value={<>&lt; <StatCounter value={4} /> min</>}
-            label="Average First Response"
-          />
-          <MetricItem
-            icon={<TrendingDown className="h-5 w-5" />}
-            value={<><StatCounter value={40} />–<StatCounter value={60} suffix="%" /></>}
-            label="Cost Reduction vs. In-House"
-          />
-          <MetricItem
-            icon={<Languages className="h-5 w-5" />}
-            value={<span className="text-[oklch(0.75_0.18_285)]">EN + FR</span>}
-            label="Bilingual Coverage"
-          />
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function MetricItem({ icon, value, label }: { icon: React.ReactNode; value: React.ReactNode; label: string }) {
-  return (
-    <div className="px-6 py-4 lg:py-2 text-center text-white">
-      <div className="inline-flex items-center justify-center text-[oklch(0.72_0.20_285)] mb-2 opacity-75">
-        {icon}
-      </div>
-      <div className="font-mono text-3xl lg:text-4xl text-[oklch(0.75_0.18_285)] font-semibold">{value}</div>
-      <div className="mt-1 text-xs text-white/50">{label}</div>
-    </div>
-  );
-}
-
-/* ───── Problem ───── */
-function Problem() {
+/* ───── Problem + Stats (combined) ───── */
+function ProblemAndStats() {
   const items = [
     {
       icon: <TrendingDown className="h-6 w-6" />,
@@ -462,16 +318,19 @@ function Problem() {
     },
   ];
 
+  const fields = ["SaaS Platforms", "FinTech", "E-Commerce", "Managed Services", "EdTech", "B2B Marketplaces"];
+
   return (
-    <section className="py-24 bg-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="bg-white">
+      {/* Problem cards */}
+      <div className="py-20 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal>
           <SectionHeading
             eyebrow="Why companies come to us"
             title="Your support costs are eating your margins."
           />
         </Reveal>
-        <div className="mt-14 grid md:grid-cols-3 gap-6">
+        <div className="mt-12 grid md:grid-cols-3 gap-6">
           {items.map((it, i) => (
             <Reveal key={it.title} delay={i * 90}>
               <div className="group h-full rounded-2xl border border-border bg-white p-7 hover:border-violet/30 hover:shadow-[0_8px_30px_oklch(0.55_0.25_285/0.08)] transition-all duration-300">
@@ -484,15 +343,58 @@ function Problem() {
             </Reveal>
           ))}
         </div>
-        <Reveal delay={250}>
-          <div className="mt-12 mx-auto max-w-4xl rounded-2xl border-l-4 border-violet bg-violet-light/50 p-6">
-            <p className="font-display text-lg md:text-xl text-[oklch(0.13_0.07_285)]">
-              There's a better model: a{" "}
-              <span className="text-violet font-semibold">dedicated, trained engineer</span> who works
-              exclusively for your company — at a fraction of the cost.
+      </div>
+
+      {/* Stats band */}
+      <div className="bg-[oklch(0.13_0.07_285)] relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid-dots" aria-hidden="true" />
+        <div
+          className="absolute inset-0 pointer-events-none"
+          aria-hidden="true"
+          style={{ background: "radial-gradient(60% 80% at 50% 120%, oklch(0.55 0.25 285 / 0.22), transparent 60%)" }}
+        />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+          <Reveal>
+            <p className="text-center text-xs font-semibold tracking-[0.22em] uppercase text-white/35 mb-10">
+              Our numbers
             </p>
+          </Reveal>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/8 rounded-2xl overflow-hidden mb-12">
+            {[
+              { icon: <BarChart3 className="h-5 w-5" />, value: <><StatCounter value={98} suffix="%" /></>, label: "QA Score Target" },
+              { icon: <Clock className="h-5 w-5" />, value: <>&lt;&thinsp;<StatCounter value={4} />&thinsp;min</>, label: "Avg. First Response" },
+              { icon: <TrendingDown className="h-5 w-5" />, value: <><StatCounter value={40} />–<StatCounter value={60} suffix="%" /></>, label: "Cost Reduction vs. In-House" },
+              { icon: <Languages className="h-5 w-5" />, value: <span className="text-[oklch(0.75_0.18_285)]">EN + FR</span>, label: "Bilingual Coverage" },
+            ].map((m, i) => (
+              <Reveal key={m.label} delay={i * 70}>
+                <div className="bg-[oklch(0.17_0.08_285)] px-6 py-10 text-center text-white flex flex-col items-center gap-2">
+                  <div className="text-[oklch(0.72_0.20_285)] opacity-60">{m.icon}</div>
+                  <div className="font-mono text-4xl md:text-5xl font-semibold text-[oklch(0.75_0.18_285)]">{m.value}</div>
+                  <div className="text-[11px] text-white/40 leading-snug max-w-[110px]">{m.label}</div>
+                </div>
+              </Reveal>
+            ))}
           </div>
-        </Reveal>
+
+          {/* Emerging fields */}
+          <Reveal variant="fade" delay={200}>
+            <div className="text-center">
+              <p className="text-sm text-white/50 mb-4">
+                We serve clients from fast-growing fields including:
+              </p>
+              <div className="flex flex-wrap justify-center gap-3">
+                {fields.map((f) => (
+                  <span
+                    key={f}
+                    className="px-4 py-1.5 rounded-full border border-white/12 bg-white/5 text-xs font-medium text-white/60 backdrop-blur-sm"
+                  >
+                    {f}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        </div>
       </div>
     </section>
   );
@@ -795,61 +697,6 @@ function PilotCallout() {
             </CTAButton>
           </div>
           <p className="mt-4 text-sm text-white/65">No setup fees. No long-term contract for the pilot.</p>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-/* ───── Partner Section ───── */
-function PartnerSection() {
-  return (
-    <section className="py-24 bg-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-14 items-center">
-        <Reveal>
-          <div>
-            <div className="text-xs font-semibold tracking-[0.2em] uppercase text-violet mb-3">
-              Not a vendor. A partner.
-            </div>
-            <h3 className="font-display text-3xl md:text-4xl font-bold text-[oklch(0.13_0.07_285)]">
-              We Don't Disappear After Onboarding.
-            </h3>
-            <p className="mt-5 text-muted-foreground leading-relaxed">
-              Most outsourcing companies hand you an agent and move on. At Zenorva Support, our founder stays
-              involved — reviewing performance, adjusting workflows, and proactively flagging issues before they
-              become problems. Our goal is to become an extension of your team, not a line item on your invoice.
-            </p>
-            <ul className="mt-6 space-y-3.5">
-              {[
-                "Proactive reporting — we surface issues before you notice them",
-                "Regular strategy alignment — we adapt as your product evolves",
-                "Transparent communication — no surprises, ever",
-              ].map((t) => (
-                <li key={t} className="flex items-start gap-3">
-                  <CheckCircle2 className="h-5 w-5 text-violet flex-none mt-0.5" aria-hidden="true" />
-                  <span className="text-foreground">{t}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Reveal>
-        <Reveal delay={120}>
-          <blockquote
-            className="rounded-2xl p-8 border-l-4 border-violet relative overflow-hidden"
-            style={{ background: "linear-gradient(135deg, oklch(0.13 0.07 285), oklch(0.18 0.09 285))" }}
-          >
-            <div
-              className="absolute top-0 right-0 w-40 h-40 rounded-full opacity-10 blur-2xl"
-              aria-hidden="true"
-              style={{ background: "oklch(0.55 0.25 285)" }}
-            />
-            <span className="relative font-display text-7xl text-violet leading-none block -mb-4">"</span>
-            <p className="relative font-display text-xl md:text-2xl leading-snug text-white">
-              The best outsourcing partnerships stop feeling like outsourcing. The team becomes yours — aligned
-              to your brand, your customers, and your growth.
-            </p>
-            <footer className="relative mt-6 text-sm text-white/55">— Zenorva Support founding philosophy</footer>
-          </blockquote>
         </Reveal>
       </div>
     </section>
